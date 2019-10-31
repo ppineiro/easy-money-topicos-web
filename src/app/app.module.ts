@@ -38,6 +38,7 @@ import { VoluntadesListaComponent } from './components/voluntades-lista/voluntad
 import { FichaVoluntadComponent } from './components/ficha-voluntad/ficha-voluntad.component';
 import { PropuestaComponent } from './components/propuesta/propuesta.component';
 import { TransaccionComponent } from './components/transaccion/transaccion.component';
+import { CotizacionComponent } from './components/cotizacion/cotizacion/cotizacion.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { TransaccionComponent } from './components/transaccion/transaccion.compo
     FichaVoluntadComponent,
     PropuestaComponent,
     TransaccionComponent,
+    CotizacionComponent,
   ],
   imports: [
     HttpClientModule, // import the module

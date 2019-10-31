@@ -12,6 +12,7 @@ const API_URL = 'http://localhost:8000/voluntades';
 export class VoluntadesService {
   constructor(private http: HttpClient) {
     console.log('Service Listo');
+    console.log('Service ok');
   }
 
   getVoluntades(): Observable<VoluntadModel[]> {

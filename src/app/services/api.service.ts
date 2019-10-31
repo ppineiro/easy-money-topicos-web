@@ -14,6 +14,7 @@ export class ApiService {
 
     const headers = new HttpHeaders({
       Authorization:
+        // tslint:disable-next-line: max-line-length
         'Bearer BQBwlKttm5fahFdJHjP0cKBwIXCcUhDxXY_uo0OmZ4_1UnDAIwkEUz328oWPO4thCeyl-X_zi17kLxHeXRVyyJ6dS-h1J1yC-FyAasqUW1FAfoZMPDio1i001-4zo2IxGoRWBc1fFtsUoMtTDbkdOWhjzp9ehDdz9O_9qg'
     });
 
