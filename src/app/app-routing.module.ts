@@ -13,11 +13,11 @@ const routes: Routes = [
   { path: 'transaccion/:id', component: TransaccionComponent },
   { path: 'transaccion', component: TransaccionComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

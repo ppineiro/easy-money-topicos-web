@@ -27,7 +27,7 @@ import {
   NbWindowModule,
   NbToastrModule,
   NbDialogService,
-  NbListModule,
+  NbListModule
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,6 +38,7 @@ import { VoluntadesListaComponent } from './components/voluntades-lista/voluntad
 import { FichaVoluntadComponent } from './components/ficha-voluntad/ficha-voluntad.component';
 import { PropuestaComponent } from './components/propuesta/propuesta.component';
 import { TransaccionComponent } from './components/transaccion/transaccion.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,9 +51,10 @@ import { TransaccionComponent } from './components/transaccion/transaccion.compo
     VoluntadesListaComponent,
     FichaVoluntadComponent,
     PropuestaComponent,
-    TransaccionComponent,
+    TransaccionComponent
   ],
   imports: [
+    CommonModule,
     HttpClientModule, // import the module
 
     BrowserModule,
@@ -83,9 +85,9 @@ import { TransaccionComponent } from './components/transaccion/transaccion.compo
     NbCardModule,
     BrowserAnimationsModule,
     NbEvaIconsModule,
-    NbListModule,
+    NbListModule
   ],
   providers: [NbDialogService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

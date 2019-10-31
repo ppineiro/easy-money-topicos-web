@@ -10,7 +10,7 @@ export class ApiService {
   }
 
   getQuery(query: string) {
-    const url = `http://localhost:8000/${query}`;
+    const url = `https://easymoneyapi.azurewebsites.net/${query}`;
 
     const headers = new HttpHeaders({
       Authorization:

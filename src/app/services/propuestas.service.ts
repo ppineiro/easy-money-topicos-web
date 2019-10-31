@@ -1,17 +1,17 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { PropuestaModel } from "./models/propuesta.model";
-import { PropuestaCreateModel } from "./models/propuesta.create.model";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { PropuestaModel } from './models/propuesta.model';
+import { PropuestaCreateModel } from './models/propuesta.create.model';
 
-const API_URL = "http://localhost:8000/propuestas";
+const API_URL = 'https://easymoneyapi.azurewebsites.net/propuestas';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class PropuestasService {
   constructor(private http: HttpClient) {
-    console.log("Service Listo");
+    console.log('Service Listo');
   }
 
   getPropuestas(): Observable<PropuestaModel[]> {

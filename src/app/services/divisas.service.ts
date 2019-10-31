@@ -1,17 +1,17 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { DivisaModel } from "./models/divisa.model";
-import { Observable } from "rxjs";
-import { DivisaCreateModel } from "./models/divisa.create.model";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { DivisaModel } from './models/divisa.model';
+import { Observable } from 'rxjs';
+import { DivisaCreateModel } from './models/divisa.create.model';
 
-const API_URL = "http://localhost:8000/divisas";
+const API_URL = 'https://easymoneyapi.azurewebsites.net/divisas';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class DivisasService {
   constructor(private http: HttpClient) {
-    console.log("Service Listo");
+    console.log('Service Listo');
   }
 
   getDivisas(): Observable<DivisaModel[]> {
