@@ -1,0 +1,60 @@
+<nb-layout>
+  <nb-layout-header fixed><app-navbar></app-navbar></nb-layout-header>
+  <nb-layout-column>
+    <nb-card>
+      <nb-card-header>Ingreso de Voluntad</nb-card-header>
+      <nb-card-body>
+        <nb-select
+          required
+          placeholder="Divisa"
+          shape="round"
+          [(ngModel)]="divisa"
+        >
+          <nb-option *ngFor="let divisa of divisas" value="{{ divisa.id }}">{{
+            divisa.codigoISO
+          }}</nb-option> </nb-select
+        ><br />
+        <input
+          shape="round"
+          type="number"
+          nbInput
+          placeholder="Monto"
+          [(ngModel)]="monto"
+          required
+        /><br />
+        <nb-select
+          required
+          placeholder="Operación"
+          shape="round"
+          [(ngModel)]="operacion"
+        >
+          <nb-option
+            *ngFor="let operacion of operaciones"
+            value="{{ operacion.id }}"
+            >{{ operacion.nombre }}</nb-option
+          > </nb-select
+        ><br />
+        <nb-select
+          required
+          placeholder="Usuario"
+          shape="round"
+          [(ngModel)]="usuario"
+        >
+          <nb-option
+            *ngFor="let usuario of usuarios"
+            value="{{ usuario.id }}"
+            >{{ usuario.nombre }}</nb-option
+          >
+        </nb-select>
+        <br /><br />
+        <button nbButton shape="round" (click)="insertVoluntad()">
+          Confirmar
+        </button>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    Universidad Católica del Uruguay
+  </nb-layout-footer>
+</nb-layout>

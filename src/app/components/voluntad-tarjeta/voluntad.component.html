@@ -1,0 +1,21 @@
+<div class="card-row">
+  <div class="card-col">
+    <nb-card size="small" status="primary">
+      <nb-card-header>#{{ voluntadid }}</nb-card-header>
+      <nb-card-body>
+        <h4>{{ voluntad }} {{ divisa }} {{ monto }}!</h4>
+        <h4>Nombre: {{ usernombre }}</h4>
+      </nb-card-body>
+      <nb-card-footer align="right">
+        <button *ngIf="isInDashboard" nbButton shape="round" (click)="verVoluntad()">
+          Ver
+        </button>
+        <div class="calificacion">
+          REPUTACIÓN:
+          <a *ngFor="let number of numbers">&#9733; </a>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+  <div class="card-col"></div>
+</div>

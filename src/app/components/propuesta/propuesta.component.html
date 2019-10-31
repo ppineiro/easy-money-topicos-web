@@ -1,0 +1,12 @@
+<nb-card status="warning">
+  <nb-card-header>{{ username }}</nb-card-header>
+  <nb-card-body>
+    <h4>Cotización ofrecida: {{ cotizacion }}</h4>
+    <br />
+    <h4>Total: $ {{ cotizacion * monto }}</h4>
+  </nb-card-body>
+  <nb-card-footer><button nbButton shape="round" status="danger" (click)="rechazar()">Rechazar</button><br /><br />
+    <button nbButton shape="round" status="success" (click)="aceptar()">
+      Aceptar
+    </button></nb-card-footer>
+</nb-card>
