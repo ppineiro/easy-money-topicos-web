@@ -37,10 +37,7 @@ stages:
 
     - script: |
         npm install -g @angular/cli
-        npm install http-server -g
         npm install
-        ng build --prod
-        cd dist
       displayName: 'npm install and build'
       
     - task: ArchiveFiles@2
@@ -77,4 +74,4 @@ stages:
               appName: $(webAppName)
               runtimeStack: 'NODE|10.10'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-              startUpCommand: 'http-server -p 80'
+              startUpCommand: 'ng serve --port 80'
