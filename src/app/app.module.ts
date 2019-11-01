@@ -40,6 +40,7 @@ import { VoluntadesListaComponent } from "./components/voluntades-lista/voluntad
 import { FichaVoluntadComponent } from "./components/ficha-voluntad/ficha-voluntad.component";
 import { PropuestaComponent } from "./components/propuesta/propuesta.component";
 import { TransaccionComponent } from "./components/transaccion/transaccion.component";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
