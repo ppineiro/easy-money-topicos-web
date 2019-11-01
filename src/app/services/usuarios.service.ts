@@ -1,17 +1,17 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { UsuarioModel } from "./models/usuario.model";
-import { UsuarioCreateModel } from "./models/usuario.create.model";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UsuarioModel } from './models/usuario.model';
+import { UsuarioCreateModel } from './models/usuario.create.model';
 
-const API_URL = "http://localhost:8000/users";
+const API_URL = 'https://easymoneyapi.azurewebsites.net/users';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class UsuariosService {
   constructor(private http: HttpClient) {
-    console.log("Service Listo");
+    console.log('Service Listo');
   }
 
   getUsuarios(): Observable<UsuarioModel[]> {

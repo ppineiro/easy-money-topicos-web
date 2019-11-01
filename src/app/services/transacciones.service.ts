@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { TransaccionModel } from './models/transaccion.model';
 import { TransaccionCreateModel } from './models/transaccion.create.model';
 
-const API_URL = 'http://localhost:8000/transacciones';
+const API_URL = 'https://easymoneyapi.azurewebsites.net/transacciones';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TransaccionesService {
   constructor(private http: HttpClient) {
@@ -23,21 +23,21 @@ export class TransaccionesService {
   }
 
   getTransaccionesPorVoluntad(
-    voluntad: string,
+    voluntad: string
   ): Observable<TransaccionModel[]> {
     return this.http.get<TransaccionModel[]>(`${API_URL}/voluntad/${voluntad}`);
   }
 
   getTransaccionesPorPropuesta(
-    propuesta: string,
+    propuesta: string
   ): Observable<TransaccionModel[]> {
     return this.http.get<TransaccionModel[]>(
-      `${API_URL}/propuesta/${propuesta}`,
+      `${API_URL}/propuesta/${propuesta}`
     );
   }
 
   insertTransaccion(
-    transaccion: TransaccionCreateModel,
+    transaccion: TransaccionCreateModel
   ): Observable<TransaccionModel> {
     return this.http.post<TransaccionModel>(API_URL, transaccion);
   }

@@ -56,6 +56,7 @@ import { TransaccionComponent } from "./components/transaccion/transaccion.compo
     ListaOfertasComponent
   ],
   imports: [
+    CommonModule,
     HttpClientModule, // import the module
 
     BrowserModule,

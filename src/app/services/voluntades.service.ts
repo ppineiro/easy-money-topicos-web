@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { VoluntadModel } from './models/voluntad.model';
 import { VoluntadCreateModel } from './models/voluntad.create.model';
 
-const API_URL = 'http://localhost:8000/voluntades';
+const API_URL = 'https://easymoneyapi.azurewebsites.net/voluntades';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class VoluntadesService {
   constructor(private http: HttpClient) {
