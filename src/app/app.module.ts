@@ -1,14 +1,14 @@
-import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { IngresoVoluntadComponent } from "./components/ingreso-voluntad/ingreso-voluntad.component";
-import { VoluntadComponent } from "./components/voluntad-tarjeta/voluntad.component";
-import { NavbarComponent } from "./components/shared/navbar/navbar.component";
-import { LoadingComponent } from "./components/shared/loading/loading.component";
-import { ListaOfertasComponent } from "./components/lista-ofertas/lista-ofertas.component";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { IngresoVoluntadComponent } from './components/ingreso-voluntad/ingreso-voluntad.component';
+import { VoluntadComponent } from './components/voluntad-tarjeta/voluntad.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
+import { ListaOfertasComponent } from './components/lista-ofertas/lista-ofertas.component';
 
 import {
   NbThemeModule,
@@ -29,18 +29,18 @@ import {
   NbWindowModule,
   NbToastrModule,
   NbDialogService,
-  NbListModule
-} from "@nebular/theme";
-import { RouterModule } from "@angular/router";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NbEvaIconsModule } from "@nebular/eva-icons";
-import { FormsModule } from "@angular/forms";
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { VoluntadesListaComponent } from "./components/voluntades-lista/voluntades-lista.component";
-import { FichaVoluntadComponent } from "./components/ficha-voluntad/ficha-voluntad.component";
-import { PropuestaComponent } from "./components/propuesta/propuesta.component";
-import { TransaccionComponent } from "./components/transaccion/transaccion.component";
-import { CommonModule } from "@angular/common";
+  NbListModule,
+} from '@nebular/theme';
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { VoluntadesListaComponent } from './components/voluntades-lista/voluntades-lista.component';
+import { FichaVoluntadComponent } from './components/ficha-voluntad/ficha-voluntad.component';
+import { PropuestaComponent } from './components/propuesta/propuesta.component';
+import { TransaccionComponent } from './components/transaccion/transaccion.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import { CommonModule } from "@angular/common";
     FichaVoluntadComponent,
     PropuestaComponent,
     TransaccionComponent,
-    ListaOfertasComponent
+    ListaOfertasComponent,
   ],
   imports: [
     CommonModule,
@@ -66,7 +66,7 @@ import { CommonModule } from "@angular/common";
     AppRoutingModule,
     FormsModule,
 
-    NbThemeModule.forRoot({ name: "default" }),
+    NbThemeModule.forRoot({ name: 'default' }),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -88,9 +88,9 @@ import { CommonModule } from "@angular/common";
     NbCardModule,
     BrowserAnimationsModule,
     NbEvaIconsModule,
-    NbListModule
+    NbListModule,
   ],
   providers: [NbDialogService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
