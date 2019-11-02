@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   TOKEN_KEY = 'token';
@@ -17,7 +17,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    public jwtHelper: JwtHelperService
+    public jwtHelper: JwtHelperService,
   ) {
     this.leerToken();
   }
@@ -29,7 +29,7 @@ export class AuthService {
   login(email, password) {
     const authData = {
       email,
-      password
+      password,
     };
 
     return this.http.post(`${this.url}/sessions`, authData).subscribe(
@@ -39,7 +39,7 @@ export class AuthService {
           type: 'success',
           title: 'Autenticación exitosa!',
           showConfirmButton: false,
-          timer: 1000
+          timer: 1000,
         });
 
         this.router.navigateByUrl('/pages');
@@ -47,20 +47,20 @@ export class AuthService {
       err => {
         Swal.fire({
           type: 'error',
-          title: 'Correo y/o contraseña incorrecta'
+          title: 'Correo y/o contraseña incorrecta',
         });
-      }
+      },
     );
   }
 
   olvidoPass(email: string) {
     const authData = {
-      usuarioEmail: email
+      usuarioEmail: email,
     };
     console.log(authData);
     return this.http
       .post(`${this.url}/users/forgotPassword`, authData, {
-        responseType: 'text'
+        responseType: 'text',
       })
       .subscribe(
         resp => {
@@ -68,7 +68,7 @@ export class AuthService {
           Swal.fire({
             type: 'success',
             title: 'Listo! Le enviamos la nueva contraseña a su correo',
-            showConfirmButton: true
+            showConfirmButton: true,
           });
           this.router.navigateByUrl('/auth/login');
         },
@@ -76,9 +76,9 @@ export class AuthService {
           console.log(err);
           Swal.fire({
             type: 'error',
-            title: 'Correo incorrecto'
+            title: 'Correo incorrecto',
           });
-        }
+        },
       );
   }
 
