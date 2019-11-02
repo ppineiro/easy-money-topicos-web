@@ -30,6 +30,8 @@ import {
   NbToastrModule,
   NbDialogService,
   NbListModule,
+  NbContextMenuModule,
+  NbContextMenuComponent,
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -72,9 +74,12 @@ export function tokenGetter() {
     AppRoutingModule,
     FormsModule,
 
+    NbLayoutModule,
+    NbActionsModule,
+    NbMenuModule.forRoot(),
+    NbContextMenuModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbSidebarModule.forRoot(),
-    NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
@@ -84,8 +89,6 @@ export function tokenGetter() {
     NbSelectModule,
     NbInputModule,
     NbCardModule,
-    NbLayoutModule,
-    NbActionsModule,
     NbButtonModule,
     NbUserModule,
     NbCheckboxModule,
