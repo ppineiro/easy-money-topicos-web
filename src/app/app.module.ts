@@ -8,6 +8,8 @@ import { IngresoVoluntadComponent } from './components/ingreso-voluntad/ingreso-
 import { VoluntadComponent } from './components/voluntad-tarjeta/voluntad.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { ListaOfertasComponent } from './components/lista-ofertas/lista-ofertas.component';
+
 import {
   NbThemeModule,
   NbLayoutModule,
@@ -27,7 +29,7 @@ import {
   NbWindowModule,
   NbToastrModule,
   NbDialogService,
-  NbListModule
+  NbListModule,
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -51,7 +53,8 @@ import { CommonModule } from '@angular/common';
     VoluntadesListaComponent,
     FichaVoluntadComponent,
     PropuestaComponent,
-    TransaccionComponent
+    TransaccionComponent,
+    ListaOfertasComponent,
   ],
   imports: [
     CommonModule,
@@ -85,9 +88,9 @@ import { CommonModule } from '@angular/common';
     NbCardModule,
     BrowserAnimationsModule,
     NbEvaIconsModule,
-    NbListModule
+    NbListModule,
   ],
   providers: [NbDialogService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
