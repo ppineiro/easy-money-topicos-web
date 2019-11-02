@@ -84,6 +84,11 @@ export class AuthService {
       );
   }
 
+  getUsuarioActualId(): string {
+    const token = localStorage.getItem('token');
+    return this.jwtHelper.decodeToken(token).id;
+  }
+
   private guardarToken(xToken: string) {
     this.userToken = xToken;
     localStorage.setItem('token', xToken);
