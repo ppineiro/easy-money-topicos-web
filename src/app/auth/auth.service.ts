@@ -10,7 +10,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
   TOKEN_KEY = 'token';
 
-  private url = 'http://localhost:8000';
+  private url = 'https://easymoneyapi.azurewebsites.net';
+  // private url = 'http://localhost:8000';
 
   userToken: string;
 
@@ -42,7 +43,7 @@ export class AuthService {
           timer: 1000,
         });
 
-        this.router.navigateByUrl('/pages');
+        this.router.navigateByUrl('/dashboard');
       },
       err => {
         Swal.fire({
@@ -101,5 +102,33 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  registro(nombre, email, password, ubicacion) {
+    const authData = {
+      nombre,
+      email,
+      password,
+      ubicacion,
+    };
+
+    return this.http.post(`${this.url}/users`, authData).subscribe(
+      resp => {
+        Swal.fire({
+          type: 'success',
+          title: 'Registro exitoso!',
+          showConfirmButton: false,
+          timer: 1000,
+        });
+
+        this.router.navigateByUrl('/auth/login');
+      },
+      err => {
+        Swal.fire({
+          type: 'error',
+          title: 'Error. Por favor verifique los datos.',
+        });
+      },
+    );
   }
 }

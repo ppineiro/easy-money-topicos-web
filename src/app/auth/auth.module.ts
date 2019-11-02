@@ -14,7 +14,6 @@ import {
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { OlvidoPasswordComponent } from './olvido-password/olvido-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -36,12 +35,7 @@ export function tokenGetter() {
 
     NbAuthModule,
   ],
-  declarations: [
-    LoginComponent,
-    RegistroComponent,
-    OlvidoPasswordComponent,
-    ResetPasswordComponent,
-  ],
+  declarations: [LoginComponent, RegistroComponent, OlvidoPasswordComponent],
   providers: [AuthService],
 })
 export class AuthModule {}
