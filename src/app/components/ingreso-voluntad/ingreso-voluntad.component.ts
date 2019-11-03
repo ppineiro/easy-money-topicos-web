@@ -18,6 +18,7 @@ export class IngresoVoluntadComponent {
   monto: number;
   operacion: number;
   usuario: string;
+  prueba: string;
 
   divisas = [];
   operaciones = [{ id: 1, nombre: 'Compra' }, { id: 2, nombre: 'Venta' }];
