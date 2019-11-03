@@ -1,13 +1,5 @@
 <p>cotizacion works!</p>
-<h2>  
-  India flag icon -> <span class="flag-icon flag-icon-in flag-icon-squared"></span>  
-  <br/>  
-  France flag icon -> <span class="flag-icon flag-icon-fr flag-icon-squared"></span>  
-  <br/>  
-  Australia flag icon -> <span class="flag-icon flag-icon-au flag-icon-squared"></span>  
-  <br/>  
-  United Kingdom flag icon -> <span class="flag-icon flag-icon-gb flag-icon-squared"></span>  
-</h2>
+
 <table mdbTable>
   <thead>
     <tr>
@@ -15,10 +7,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr mdbTableCol *ngFor="let el of elements">
-      <th scope="row"><span class="flag-icon flag-icon-gb flag-icon-squared"></span>  </th>
-     <td>{{el.compra}}</td>
-      <td>{{el.venta}}</td>
+    <tr mdbTableCol >
+      <td><span class="flag-icon flag-icon-ar flag-icon-squared"></span> Peso Argentino </td>
+     <td>0.31</td>
+      <td>0.86</td>
     </tr>
+    <tr mdbTableCol > <td><span class="flag-icon flag-icon-br flag-icon-squared"></span> Real </td>
+      <td>8.6</td>
+       <td>9.9</td></tr>
+       <tr mdbTableCol > <td><span class="flag-icon flag-icon-hn flag-icon-squared"></span> Euro </td>
+        <td>39.9</td>
+         <td>43.7</td></tr>
+         <tr mdbTableCol > <td><span class="flag-icon flag-icon-us flag-icon-squared"></span> Dólar </td>
+          <td>36.6</td>
+           <td>38.12</td></tr>
   </tbody>
 </table>
