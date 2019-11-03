@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IngresoVoluntadComponent } from './components/ingreso-voluntad/ingreso-voluntad.component';
+import { TiposMonedaComponent } from './components/tipos-moneda/tipos-moneda.component';
 import { VoluntadComponent } from './components/voluntad-tarjeta/voluntad.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
@@ -54,6 +55,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     IngresoVoluntadComponent,
+    TiposMonedaComponent,
     VoluntadComponent,
     NavbarComponent,
     LoadingComponent,

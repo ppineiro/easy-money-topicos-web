@@ -3,6 +3,7 @@ import { FichaVoluntadComponent } from './components/ficha-voluntad/ficha-volunt
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IngresoVoluntadComponent } from './components/ingreso-voluntad/ingreso-voluntad.component';
+import { TiposMonedaComponent } from './components/tipos-moneda/tipos-moneda.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TransaccionComponent } from './components/transaccion/transaccion.component';
 import { ListaOfertasComponent } from './components/lista-ofertas/lista-ofertas.component';
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'transaccion',
     component: TransaccionComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'tipos-moneda',
+    component: TiposMonedaComponent,
     canActivate: [AuthGuardService],
   },
   {
