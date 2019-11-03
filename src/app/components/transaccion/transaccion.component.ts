@@ -1,3 +1,5 @@
+import { BrouCotService } from "src/app/services/broucot.service";
+import { CotizacionComponent } from "./../cotizacion/cotizacion/cotizacion.component";
 import { TransaccionCreateModel } from "./../../services/models/transaccion.create.model";
 import { TransaccionModel } from "./../../services/models/transaccion.model";
 import { TransaccionesService } from "./../../services/transacciones.service";
@@ -21,9 +23,11 @@ export class TransaccionComponent {
   cotizacionBCU: number;
   califUsuarioVoluntad: number;
   califUsuarioPropuesta: number;
+  cotizacion: number;
 
   constructor(
     private transaccionService: TransaccionesService,
+    private cotizacionservice: BrouCotService,
     private activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe(params => {
@@ -34,29 +38,18 @@ export class TransaccionComponent {
         this.propuestaid = transaccion.propuesta.usuario.nombre;
         this.fecha = transaccion.fechaHora;
         this.cotizacionBCU = transaccion.cotizacionBCU;
+        this.cotizacion = transaccion.propuesta.cotizacionOf;
         this.califUsuarioVoluntad = transaccion.califUsuarioVoluntad;
         this.califUsuarioPropuesta = transaccion.califUsuarioPropuesta;
       });
     });
   }
-
-  // crearTransaccionModel(): TransaccionCreateModel {
-  //   const voluntad: TransaccionCreateModel = {
-  //     voluntad: this.voluntad,
-  //     propuesta: this.propuestaid,
-  //     cotizacionBCU: this.cotizacionBCU,
-  //     califUsuarioVoluntad: this.califUsuarioVoluntad,
-  //     califUsuarioPropuesta: this.califUsuarioPropuesta,
-  //   };
-  //   return voluntad;
-  // }
-
-  // insertVoluntad() {
-  //   console.log(this.crearTransaccionModel());
-  //   this.transaccionService
-  //     .insertTransaccion(this.crearTransaccionModel())
-  //     .subscribe(resp => {
-  //       return (this.transaccion = resp);
-  //     });
-  // }
+  getData() {
+    this.cotizacionservice.getCotizacion().subscribe(eventos => {
+      console.log(eventos);
+      console.log("entre " + eventos.rates.USD.sell);
+      let rates = eventos["rates"];
+      let peso = rates[0];
+    });
+  }
 }

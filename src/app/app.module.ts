@@ -43,6 +43,7 @@ import { VoluntadesListaComponent } from './components/voluntades-lista/voluntad
 import { FichaVoluntadComponent } from './components/ficha-voluntad/ficha-voluntad.component';
 import { PropuestaComponent } from './components/propuesta/propuesta.component';
 import { TransaccionComponent } from './components/transaccion/transaccion.component';
+import { CotizacionComponent } from './components/cotizacion/cotizacion/cotizacion.component';
 import { CommonModule } from '@angular/common';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
@@ -64,6 +65,7 @@ export function tokenGetter() {
     FichaVoluntadComponent,
     PropuestaComponent,
     TransaccionComponent,
+    CotizacionComponent,
     ListaOfertasComponent,
   ],
   imports: [
