@@ -30,6 +30,8 @@ import {
   NbToastrModule,
   NbDialogService,
   NbListModule,
+  NbContextMenuModule,
+  NbContextMenuComponent,
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,6 +43,12 @@ import { FichaVoluntadComponent } from './components/ficha-voluntad/ficha-volunt
 import { PropuestaComponent } from './components/propuesta/propuesta.component';
 import { TransaccionComponent } from './components/transaccion/transaccion.component';
 import { CommonModule } from '@angular/common';
+import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -66,9 +74,12 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     FormsModule,
 
+    NbLayoutModule,
+    NbActionsModule,
+    NbMenuModule.forRoot(),
+    NbContextMenuModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbSidebarModule.forRoot(),
-    NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
@@ -78,8 +89,6 @@ import { CommonModule } from '@angular/common';
     NbSelectModule,
     NbInputModule,
     NbCardModule,
-    NbLayoutModule,
-    NbActionsModule,
     NbButtonModule,
     NbUserModule,
     NbCheckboxModule,
@@ -89,7 +98,23 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     NbEvaIconsModule,
     NbListModule,
+    NbAuthModule.forRoot({
+      strategies: [
+        NbDummyAuthStrategy.setup({
+          name: 'email',
+          delay: 3000,
+        }),
+      ],
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: [],
+        blacklistedRoutes: [],
+      },
+    }),
   ],
+
   providers: [NbDialogService],
   bootstrap: [AppComponent],
 })

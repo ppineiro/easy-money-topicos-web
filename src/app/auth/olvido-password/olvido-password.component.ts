@@ -17,8 +17,7 @@ export class OlvidoPasswordComponent extends NbRequestPasswordComponent {
     super(service, {}, cd, router);
   }
 
-  requestPass() {
-    console.log(this.user.email);
+  requestPass(): void {
     this.authService.olvidoPass(this.user.email);
   }
 }

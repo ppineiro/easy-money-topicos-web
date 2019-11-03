@@ -1,8 +1,27 @@
-<nb-actions size="medium" class="navbar">
-    <nb-action icon="home-outline" link="/">Inicio</nb-action>
-    <nb-action icon="plus-circle-outline" link="/ingreso-voluntad">Ingresar voluntad</nb-action>
-    <nb-action icon="checkmark-circle-outline">Transacciones</nb-action>
-    <nb-action icon="message-square-outline" link="/dashboard">Notificaciones</nb-action>
-    <nb-action icon="person-outline">Perfil</nb-action>
-    <nb-action icon="power-outline">Logout</nb-action>
-</nb-actions>
+<div class="navbar navbar-expand-lg navbar-light bg-white">
+  <div [routerLink]="['/dashboard']" routerLinkActive="router-link-active">
+    <img src="assets/cash-icon.png" alt="Home" height="30em" width="30em" />
+  </div>
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#/dashboard"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#/ingreso-voluntad"
+          >Ingresar voluntad <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#/dashboard"
+          >Mis voluntades <span class="sr-only">(current)</span></a
+        >
+      </li>
+    </ul>
+    <button (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0">
+      Cerrar sesión
+    </button>
+  </div>
+</div>
