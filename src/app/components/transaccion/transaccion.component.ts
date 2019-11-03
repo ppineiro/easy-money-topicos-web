@@ -49,6 +49,7 @@ export class TransaccionComponent {
       });
     });
   }
+
   getData() {
     this.cotizacionservice.getCotizacion().subscribe(eventos => {
       console.log(eventos);
