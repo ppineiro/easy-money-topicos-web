@@ -1,18 +1,24 @@
 <p>cotizacion works!</p>
-<table style="width:100%">
+<h2>  
+  India flag icon -> <span class="flag-icon flag-icon-in flag-icon-squared"></span>  
+  <br/>  
+  France flag icon -> <span class="flag-icon flag-icon-fr flag-icon-squared"></span>  
+  <br/>  
+  Australia flag icon -> <span class="flag-icon flag-icon-au flag-icon-squared"></span>  
+  <br/>  
+  United Kingdom flag icon -> <span class="flag-icon flag-icon-gb flag-icon-squared"></span>  
+</h2>
+<table mdbTable>
+  <thead>
     <tr>
-      <th>Moneda</th>
-      <th>Compra</th>
-      <th>Venta</th>
+      <th *ngFor="let head of headElements" scope="col">{{head}} </th>
     </tr>
-    <tr>
-      <td></td>
-      <td>Smith</td>
-      <td>50</td>
+  </thead>
+  <tbody>
+    <tr mdbTableCol *ngFor="let el of elements">
+      <th scope="row"><span class="flag-icon flag-icon-gb flag-icon-squared"></span>  </th>
+     <td>{{el.compra}}</td>
+      <td>{{el.venta}}</td>
     </tr>
-    <tr>
-      <td>Eve</td>
-      <td>Jackson</td>
-      <td>94</td>
-    </tr>
-  </table>
+  </tbody>
+</table>

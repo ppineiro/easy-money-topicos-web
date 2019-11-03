@@ -15,6 +15,14 @@ export class CotizacionComponent {
     this.getData();
   }
 
+  elements: any = [
+    {moneda: 'ARG', compra: 'Mark', venta: 'Otto'},
+    {moneda: 'USD', compra: 'Jacob', venta: 'Thornton'},
+    {moneda: 'BRA', compra: 'Larry', venta: 'the Bird'},
+  ];
+
+  headElements = ['Moneda', 'Compra', 'Venta'];
+
   getData() {
     this.service.getCotizacion().subscribe(eventos => {
       console.log(eventos);
