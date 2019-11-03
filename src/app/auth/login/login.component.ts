@@ -18,7 +18,6 @@ export class LoginComponent extends NbLoginComponent {
   }
 
   login(): void {
-    console.log(this.authService);
     this.authService.login(this.user.email, this.user.password);
   }
 }

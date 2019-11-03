@@ -1,29 +1,5 @@
 <h1 id="title" class="title">Registro</h1>
 
-<nb-alert
-  *ngIf="showMessages.error && errors?.length && !submitted"
-  outline="danger"
-  role="alert"
->
-  <p class="alert-title"><b>Oh snap!</b></p>
-  <ul class="alert-message-list">
-    <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
-  </ul>
-</nb-alert>
-
-<nb-alert
-  *ngIf="showMessages.success && messages?.length && !submitted"
-  outline="success"
-  role="alert"
->
-  <p class="alert-title"><b>Hooray!</b></p>
-  <ul class="alert-message-list">
-    <li *ngFor="let message of messages" class="alert-message">
-      {{ message }}
-    </li>
-  </ul>
-</nb-alert>
-
 <form (ngSubmit)="register()" #form="ngForm" aria-labelledby="title">
   <div class="form-control-group">
     <label class="label" for="input-name">Nombre:</label>
@@ -33,7 +9,7 @@
       #fullName="ngModel"
       id="input-name"
       name="fullName"
-      placeholder="Full name"
+      placeholder="Nombre completo"
       autofocus
       fullWidth
       fieldSize="large"
@@ -54,6 +30,40 @@
         El nombre debe tener de
         {{ getConfigValue('forms.validation.fullName.minLength') }} a
         {{ getConfigValue('forms.validation.fullName.maxLength') }}
+        caracteres
+      </p>
+    </ng-container>
+  </div>
+
+  <div class="form-control-group">
+    <label class="label" for="input-location">Ubicación (Ciudad):</label>
+    <input
+      nbInput
+      [(ngModel)]="user.location"
+      #location="ngModel"
+      id="input-location"
+      name="location"
+      placeholder="Ubicación - Ciudad"
+      autofocus
+      fullWidth
+      fieldSize="large"
+      [status]="location.dirty ? (location.invalid ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.location.required')"
+      [minlength]="getConfigValue('forms.validation.location.minLength')"
+      [maxlength]="getConfigValue('forms.validation.location.maxLength')"
+      [attr.aria-invalid]="location.invalid && location.touched ? true : null"
+    />
+    <ng-container *ngIf="location.invalid && location.touched">
+      <p class="caption status-danger" *ngIf="!!location.errors?.required">
+        El nombre es requerido!
+      </p>
+      <p
+        class="caption status-danger"
+        *ngIf="!!location.errors?.minlength || !!location.errors?.maxlength"
+      >
+        La ubicación debe tener de
+        {{ getConfigValue('forms.validation.location.minLength') }} a
+        {{ getConfigValue('forms.validation.location.maxLength') }}
         caracteres
       </p>
     </ng-container>
@@ -120,7 +130,7 @@
   </div>
 
   <div class="form-control-group">
-    <label class="label" for="input-re-password">Repeat password:</label>
+    <label class="label" for="input-re-password">Confirme contraseña:</label>
     <input
       nbInput
       [(ngModel)]="user.confirmPassword"
@@ -159,7 +169,13 @@
     fullWidth
     status="primary"
     size="large"
-    [disabled]="submitted || !form.valid"
+    [disabled]="
+      submitted ||
+      !form.valid ||
+      !fullName.value ||
+      !location.value ||
+      password.value != rePass.value
+    "
     [class.btn-pulse]="submitted"
   >
     Registro

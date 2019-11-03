@@ -8,6 +8,8 @@ import { IngresoVoluntadComponent } from './components/ingreso-voluntad/ingreso-
 import { VoluntadComponent } from './components/voluntad-tarjeta/voluntad.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { ListaOfertasComponent } from './components/lista-ofertas/lista-ofertas.component';
+
 import {
   NbThemeModule,
   NbLayoutModule,
@@ -28,6 +30,8 @@ import {
   NbToastrModule,
   NbDialogService,
   NbListModule,
+  NbContextMenuModule,
+  NbContextMenuComponent,
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,6 +43,13 @@ import { FichaVoluntadComponent } from './components/ficha-voluntad/ficha-volunt
 import { PropuestaComponent } from './components/propuesta/propuesta.component';
 import { TransaccionComponent } from './components/transaccion/transaccion.component';
 import { CotizacionComponent } from './components/cotizacion/cotizacion/cotizacion.component';
+import { CommonModule } from '@angular/common';
+import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -53,8 +64,10 @@ import { CotizacionComponent } from './components/cotizacion/cotizacion/cotizaci
     PropuestaComponent,
     TransaccionComponent,
     CotizacionComponent,
+    ListaOfertasComponent,
   ],
   imports: [
+    CommonModule,
     HttpClientModule, // import the module
 
     BrowserModule,
@@ -63,9 +76,12 @@ import { CotizacionComponent } from './components/cotizacion/cotizacion/cotizaci
     AppRoutingModule,
     FormsModule,
 
+    NbLayoutModule,
+    NbActionsModule,
+    NbMenuModule.forRoot(),
+    NbContextMenuModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbSidebarModule.forRoot(),
-    NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
@@ -75,8 +91,6 @@ import { CotizacionComponent } from './components/cotizacion/cotizacion/cotizaci
     NbSelectModule,
     NbInputModule,
     NbCardModule,
-    NbLayoutModule,
-    NbActionsModule,
     NbButtonModule,
     NbUserModule,
     NbCheckboxModule,
@@ -86,7 +100,23 @@ import { CotizacionComponent } from './components/cotizacion/cotizacion/cotizaci
     BrowserAnimationsModule,
     NbEvaIconsModule,
     NbListModule,
+    NbAuthModule.forRoot({
+      strategies: [
+        NbDummyAuthStrategy.setup({
+          name: 'email',
+          delay: 3000,
+        }),
+      ],
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: [],
+        blacklistedRoutes: [],
+      },
+    }),
   ],
+
   providers: [NbDialogService],
   bootstrap: [AppComponent],
 })
