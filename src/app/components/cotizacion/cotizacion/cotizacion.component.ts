@@ -22,8 +22,6 @@ export class CotizacionComponent {
       let rates = eventos["rates"];
       let peso = rates[0];
 
-      // this.data = this.sustituirIntegracionesPorValores(eventos);
-      /*  console.log(this.data);*/
       return this.data;
     });
   }
