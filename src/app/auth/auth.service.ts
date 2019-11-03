@@ -5,31 +5,33 @@ import Swal from 'sweetalert2';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   TOKEN_KEY = 'token';
 
-  private url = 'http://localhost:8000';
+  private url = 'https://easymoneyapi.azurewebsites.net';
+  // private url = 'http://localhost:8000';
 
   userToken: string;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    public jwtHelper: JwtHelperService
+    public jwtHelper: JwtHelperService,
   ) {
     this.leerToken();
   }
 
   logout() {
     localStorage.removeItem('token');
+    this.router.navigate(['auth', 'login']);
   }
 
   login(email, password) {
     const authData = {
       email,
-      password
+      password,
     };
 
     return this.http.post(`${this.url}/sessions`, authData).subscribe(
@@ -39,28 +41,28 @@ export class AuthService {
           type: 'success',
           title: 'Autenticación exitosa!',
           showConfirmButton: false,
-          timer: 1000
+          timer: 1000,
         });
 
-        this.router.navigateByUrl('/pages');
+        this.router.navigateByUrl('/dashboard');
       },
       err => {
         Swal.fire({
           type: 'error',
-          title: 'Correo y/o contraseña incorrecta'
+          title: 'Correo y/o contraseña incorrecta',
         });
-      }
+      },
     );
   }
 
   olvidoPass(email: string) {
     const authData = {
-      usuarioEmail: email
+      usuarioEmail: email,
     };
     console.log(authData);
     return this.http
       .post(`${this.url}/users/forgotPassword`, authData, {
-        responseType: 'text'
+        responseType: 'text',
       })
       .subscribe(
         resp => {
@@ -68,7 +70,7 @@ export class AuthService {
           Swal.fire({
             type: 'success',
             title: 'Listo! Le enviamos la nueva contraseña a su correo',
-            showConfirmButton: true
+            showConfirmButton: true,
           });
           this.router.navigateByUrl('/auth/login');
         },
@@ -76,10 +78,15 @@ export class AuthService {
           console.log(err);
           Swal.fire({
             type: 'error',
-            title: 'Correo incorrecto'
+            title: 'Correo incorrecto',
           });
-        }
+        },
       );
+  }
+
+  getUsuarioActualId(): string {
+    const token = localStorage.getItem('token');
+    return this.jwtHelper.decodeToken(token).id;
   }
 
   private guardarToken(xToken: string) {
@@ -101,5 +108,33 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  registro(nombre, email, password, ubicacion) {
+    const authData = {
+      nombre,
+      email,
+      password,
+      ubicacion,
+    };
+
+    return this.http.post(`${this.url}/users`, authData).subscribe(
+      resp => {
+        Swal.fire({
+          type: 'success',
+          title: 'Registro exitoso!',
+          showConfirmButton: false,
+          timer: 1000,
+        });
+
+        this.router.navigateByUrl('/auth/login');
+      },
+      err => {
+        Swal.fire({
+          type: 'error',
+          title: 'Error. Por favor verifique los datos.',
+        });
+      },
+    );
   }
 }
