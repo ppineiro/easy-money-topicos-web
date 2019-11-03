@@ -9,39 +9,19 @@ import { DivisaBrouModel } from "src/app/services/models/divisabrou.model";
 })
 export class CotizacionComponent {
   resultado = [];
-  data: DivisaBrouModel[] = [];
+  data: DivisaBrouModel;
 
   constructor(private service: BrouCotService) {
     this.getData();
+    console.log(this.data);
   }
-
-  elements: any = [
-    {moneda: 'ARG', compra: 'Mark', venta: 'Otto'},
-    {moneda: 'USD', compra: 'Jacob', venta: 'Thornton'},
-    {moneda: 'BRA', compra: 'Larry', venta: 'the Bird'},
-  ];
 
   headElements = ['Moneda', 'Compra', 'Venta'];
 
-  getData() {
+  getData(): void {
     this.service.getCotizacion().subscribe(eventos => {
       console.log(eventos);
-      console.log("entre " + eventos.rates.USD.sell);
-      let rates = eventos["rates"];
-      let peso = rates[0];
-
-      return this.data;
+      this.data = eventos;
     });
-  }
-
-  sustituirIntegracionesPorValores(array: any[]): any[] {
-    for (let index = 0; index < array.length; index++) {
-      const element = array[index];
-      this.resultado.push(element);
-      console.log("entre");
-      this.resultado[index].monto = element.rates.ARS.buy;
-      console.log(element);
-    }
-    return this.resultado;
   }
 }

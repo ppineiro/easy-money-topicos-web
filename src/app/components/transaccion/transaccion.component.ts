@@ -44,12 +44,13 @@ export class TransaccionComponent {
       });
     });
   }
+
   getData() {
     this.cotizacionservice.getCotizacion().subscribe(eventos => {
-      console.log(eventos);
-      console.log("entre " + eventos.rates.USD.sell);
-      let rates = eventos["rates"];
-      let peso = rates[0];
+      // console.log(eventos);
+      // console.log("entre " + eventos.rates.USD.sell);
+      // let rates = eventos["rates"];
+      // let peso = rates[0];
     });
   }
 }
