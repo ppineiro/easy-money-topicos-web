@@ -33,7 +33,8 @@ export class AuthService {
       email,
       password,
     };
-
+    console.log(email);
+    console.log(password);
     return this.http.post(`${this.url}/sessions`, authData).subscribe(
       resp => {
         this.guardarToken(resp['token']);
@@ -55,9 +56,9 @@ export class AuthService {
     );
   }
 
-  olvidoPass(email: string) {
+  olvidoPass(xEmail: string) {
     const authData = {
-      usuarioEmail: email,
+      email: xEmail,
     };
     console.log(authData);
     return this.http
