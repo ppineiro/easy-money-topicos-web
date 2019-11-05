@@ -17,7 +17,13 @@ import { ActivatedRoute } from '@angular/router';
   providers: [VoluntadesService, DivisasService, UsuariosService],
 })
 export class TransaccionComponent {
-  fecha: Date;
+  private _fechaHora: Date;
+  public get fechaHora(): Date {
+    return this._fechaHora;
+  }
+  public set fechaHora(value: Date) {
+    this._fechaHora = value;
+  }
   voluntadid: string;
   propuestaid: string;
   cotizacionBCU: number;
@@ -37,7 +43,7 @@ export class TransaccionComponent {
         console.log(res);
         this.voluntadid = transaccion.voluntad.usuario.nombre;
         this.propuestaid = transaccion.propuesta.usuario.nombre;
-        this.fecha = transaccion.fechaHora;
+        this.fechaHora = transaccion.fechaHora;
         this.cotizacionBCU = transaccion.cotizacionBCU;
         this.cotizacion = transaccion.propuesta.cotizacionOf;
         this.califUsuarioVoluntad = transaccion.califUsuarioVoluntad;

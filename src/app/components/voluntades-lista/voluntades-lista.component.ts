@@ -41,7 +41,7 @@ export class VoluntadesListaComponent {
       this.resultado[index].id = element._id;
       this.resultado[index].monto = element.monto;
       this.resultado[index].divisa = element.divisa.codigoISO;
-
+ 
       if (element.operacion === 1) {
         this.resultado[index].voluntad = 'COMPRO ';
       } else {

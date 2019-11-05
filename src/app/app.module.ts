@@ -46,6 +46,7 @@ import { CotizacionComponent } from './components/cotizacion/cotizacion/cotizaci
 import { CommonModule } from '@angular/common';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { TransaccionesListaComponent } from './components/transacciones-lista/transacciones-lista.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -65,6 +66,7 @@ export function tokenGetter() {
     TransaccionComponent,
     CotizacionComponent,
     ListaOfertasComponent,
+    TransaccionesListaComponent,
   ],
   imports: [
     CommonModule,
