@@ -37,6 +37,7 @@ export class AuthService {
     console.log(password);
     return this.http.post(`${this.url}/sessions`, authData).subscribe(
       resp => {
+        console.log(resp);
         this.guardarToken(resp['token']);
         Swal.fire({
           type: 'success',
@@ -48,6 +49,7 @@ export class AuthService {
         this.router.navigateByUrl('/dashboard');
       },
       err => {
+        console.log(err);
         Swal.fire({
           type: 'error',
           title: 'Correo y/o contraseña incorrecta',
