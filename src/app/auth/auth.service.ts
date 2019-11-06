@@ -35,29 +35,27 @@ export class AuthService {
     };
     console.log(email);
     console.log(password);
-    return this.http
-      .post(`${this.url}/sessions`, authData, { responseType: 'text' })
-      .subscribe(
-        resp => {
-          console.log(resp);
-          this.guardarToken(resp['token']);
-          Swal.fire({
-            type: 'success',
-            title: 'Autenticación exitosa!',
-            showConfirmButton: false,
-            timer: 1000,
-          });
+    return this.http.post(`${this.url}/sessions`, authData).subscribe(
+      resp => {
+        console.log(resp);
+        this.guardarToken(resp['token']);
+        Swal.fire({
+          type: 'success',
+          title: 'Autenticación exitosa!',
+          showConfirmButton: false,
+          timer: 1000,
+        });
 
-          this.router.navigateByUrl('/dashboard');
-        },
-        err => {
-          console.log(err);
-          Swal.fire({
-            type: 'error',
-            title: 'Correo y/o contraseña incorrecta',
-          });
-        },
-      );
+        this.router.navigateByUrl('/dashboard');
+      },
+      err => {
+        console.log(err);
+        Swal.fire({
+          type: 'error',
+          title: 'Correo y/o contraseña incorrecta',
+        });
+      },
+    );
   }
 
   olvidoPass(xEmail: string) {
