@@ -1,0 +1,22 @@
+<nb-card>
+  <nb-card-header>Datos de la transaccion</nb-card-header>
+  <nb-card-body>
+    <div>Propuesta: {{ propuestaid }}</div>
+    <br /><br />
+    <div>Ofertante: {{ voluntadid }}</div>
+    <br /><br />
+    <div>Fecha {{ fechaHora | date: 'dd/MM/yyyy' }}</div>
+    <br /><br />
+    <div>Cotización {{ cotizacion }}</div>
+    <br /><br />
+    <div>Calificación del usuario voluntad {{ califUsuarioVoluntad }}</div>
+    <br /><br />
+    <div>Calificación del usuario propuesta {{ califUsuarioPropuesta }}</div>
+    <br /><br />
+    <div>Cotización del BCU {{ cotizacionBCU }}</div>
+    <br /><br />
+    <b>
+      <div>Ahorro ${{ ahorro }}</div>
+    </b>
+  </nb-card-body>
+</nb-card>

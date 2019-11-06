@@ -1,7 +1,8 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { TransaccionModel } from '../../services/models/transaccion.model';
-import { TransaccionesService } from 'src/app/services/transacciones.service';
 import { Router } from '@angular/router';
+import { TransaccionesService } from 'src/app/services/transacciones.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-transacciones-lista',
@@ -11,31 +12,38 @@ import { Router } from '@angular/router';
 })
 export class TransaccionesListaComponent {
   data: TransaccionModel[] = [];
-  cotizacionBCU: Number;
+  usuarioId: string;
 
-  resultado= []
+  constructor(
+    private authService: AuthService,
+    private service: TransaccionesService,
+  ) {
+    this.usuarioId = this.authService.getUsuarioActualId();
+    this.getData(this.usuarioId);
+  }
 
-  constructor(private service: TransaccionesService) {
-    this.getData();
-   }
-
-   getData() {
+  getData(usuarioId: string) {
     this.service.getTransacciones().subscribe(eventos => {
       console.log(eventos);
-      this.data = this.sustituirIntegracionesPorValores(eventos);
+      this.data = this.filtrarUsuarioSustituirIntegValores(eventos, usuarioId);
       console.log(this.data);
       return this.data;
     });
   }
 
-    sustituirIntegracionesPorValores(array: TransaccionModel[]): any[] {
-      for (let index = 0; index < array.length; index++) {
-        const element = array[index];
-        this.resultado.push(element);
-        this.resultado[index].cotizacionBCU = element.cotizacionBCU;
-      }  
-      return this.resultado;
+  filtrarUsuarioSustituirIntegValores(
+    array: TransaccionModel[],
+    usuarioId: string,
+  ): any[] {
+    const resultado = [];
+    for (const transaccion of array) {
+      if (
+        transaccion.propuesta.usuario._id === usuarioId ||
+        transaccion.voluntad.usuario._id === usuarioId
+      ) {
+        resultado.push(transaccion);
+      }
     }
+    return resultado;
   }
-
-
+}

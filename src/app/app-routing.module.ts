@@ -8,6 +8,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TransaccionComponent } from './components/transaccion/transaccion.component';
 import { ListaOfertasComponent } from './components/lista-ofertas/lista-ofertas.component';
 import { AuthGuardService } from './auth/auth-guard.service';
+import { TransaccionesListaComponent } from './components/transacciones-lista/transacciones-lista.component';
+import { MistransaccionesComponent } from './components/mistransacciones/mistransacciones.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,11 @@ const routes: Routes = [
   {
     path: 'transaccion',
     component: TransaccionComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'mistransacciones',
+    component: MistransaccionesComponent,
     canActivate: [AuthGuardService],
   },
   {
