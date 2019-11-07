@@ -71,4 +71,7 @@ export class VoluntadComponent {
   verVoluntad() {
     this.router.navigate(['/ficha-voluntad', this.voluntadid]);
   }
+  ingresarPropuesta() {
+    // this.router.navigate(['/ficha-voluntad', this.voluntadid]);
+  }
 }

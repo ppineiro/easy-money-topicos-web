@@ -8,8 +8,11 @@
             </nb-card-body>
             <nb-card-footer align="right">
                 <button *ngIf="isInDashboard" nbButton shape="round" (click)="verVoluntad()">
-          Ver
-        </button>
+                    Ver
+                </button>
+                <button *ngIf="isInDashboard" nbButton shape="round" (click)="ingresarPropuesta()">
+                    Ofertar!
+                </button>
                 <div class="calificacion">
                     REPUTACIÓN:
                     <a *ngFor="let number of numbers">&#9733; </a>
