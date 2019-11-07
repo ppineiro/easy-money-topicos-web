@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class TransaccionesListaComponent {
   data: TransaccionModel[] = [];
   usuarioId: string;
+  ahorro: number;
 
   constructor(
     private authService: AuthService,
@@ -43,6 +44,10 @@ export class TransaccionesListaComponent {
       ) {
         resultado.push(transaccion);
       }
+      this.ahorro = Math.floor(
+        (transaccion.cotizacionBCU - transaccion.propuesta.cotizacionOf) *
+          transaccion.voluntad.monto,
+      );
     }
     return resultado;
   }

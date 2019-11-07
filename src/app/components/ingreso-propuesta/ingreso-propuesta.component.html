@@ -6,13 +6,20 @@
       <nb-card-header>Ingreso de Propuesta</nb-card-header>
       <nb-card-body>
 
-
         <br />
+
         <input shape="round" type="number" nbInput placeholder="Cotizacion ofrecida" [(ngModel)]="cotizacion"
           required /><br />
+        <div *ngIf="voluntad.operacion === 1">
+          <p>Usted va a vender {{ voluntad.divisa.codigoISO}} y pagara un total de $ {{cotizacion * voluntad.monto}}
+          </p>
+        </div>
+        <div *ngIf="voluntad.operacion === 2">
+          <p>Usted va a comprar {{ voluntad.divisa.codigoISO}} y recibira un total de $ {{cotizacion * voluntad.monto}}
+          </p>
+        </div>
 
-        <br />
-        <br /><br />
+
         <button nbButton shape="round" (click)="insertPropuesta()">
           Confirmar
         </button>
