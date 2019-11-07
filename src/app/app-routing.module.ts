@@ -1,3 +1,4 @@
+import { IngresopropuestaComponent } from './components/ingreso-propuesta/ingreso-propuesta.component';
 import { FichaVoluntadComponent } from './components/ficha-voluntad/ficha-voluntad.component';
 
 import { NgModule } from '@angular/core';
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'ficha-voluntad/:id',
     component: FichaVoluntadComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'ingreso-propuesta/:id',
+    component: IngresopropuestaComponent,
     canActivate: [AuthGuardService],
   },
   {

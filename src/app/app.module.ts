@@ -1,3 +1,4 @@
+import { IngresopropuestaComponent } from './components/ingreso-propuesta/ingreso-propuesta.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -71,6 +72,7 @@ export function tokenGetter() {
     TransaccionesListaComponent,
     TransaccionTarjetaComponent,
     MistransaccionesComponent,
+    IngresopropuestaComponent,
   ],
   imports: [
     CommonModule,

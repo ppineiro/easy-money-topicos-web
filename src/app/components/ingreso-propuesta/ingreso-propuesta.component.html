@@ -1,0 +1,26 @@
+<nb-layout>
+  <nb-layout-column class="padding0">
+    <app-navbar></app-navbar>
+    <br />
+    <nb-card>
+      <nb-card-header>Ingreso de Propuesta</nb-card-header>
+      <nb-card-body>
+
+
+        <br />
+        <input shape="round" type="number" nbInput placeholder="Cotizacion ofrecida" [(ngModel)]="cotizacion"
+          required /><br />
+
+        <br />
+        <br /><br />
+        <button nbButton shape="round" (click)="insertPropuesta()">
+          Confirmar
+        </button>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    Universidad Católica del Uruguay
+  </nb-layout-footer>
+</nb-layout>
