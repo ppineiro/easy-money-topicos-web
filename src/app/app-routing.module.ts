@@ -11,6 +11,7 @@ import { ListaOfertasComponent } from './components/lista-ofertas/lista-ofertas.
 import { AuthGuardService } from './auth/auth-guard.service';
 import { TransaccionesListaComponent } from './components/transacciones-lista/transacciones-lista.component';
 import { MistransaccionesComponent } from './components/mistransacciones/mistransacciones.component';
+import { MisVoluntadesComponent } from './components/mis-voluntades/mis-voluntades.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: 'ingreso-voluntad',
     component: IngresoVoluntadComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'mis-voluntades',
+    component: MisVoluntadesComponent,
     canActivate: [AuthGuardService],
   },
   {

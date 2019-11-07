@@ -50,6 +50,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { TransaccionesListaComponent } from './components/transacciones-lista/transacciones-lista.component';
 import { TransaccionTarjetaComponent } from './components/transaccion-tarjeta/transaccion-tarjeta.component';
 import { MistransaccionesComponent } from './components/mistransacciones/mistransacciones.component';
+import { MisVoluntadesComponent } from './components/mis-voluntades/mis-voluntades.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -73,6 +74,7 @@ export function tokenGetter() {
     TransaccionTarjetaComponent,
     MistransaccionesComponent,
     IngresopropuestaComponent,
+    MisVoluntadesComponent,
   ],
   imports: [
     CommonModule,

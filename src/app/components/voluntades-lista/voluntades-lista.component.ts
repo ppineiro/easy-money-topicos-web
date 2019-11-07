@@ -2,6 +2,7 @@ import { VoluntadModel } from '../../services/models/voluntad.model';
 import { VoluntadesService } from '../../services/voluntades.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-voluntades-lista',
@@ -19,7 +20,10 @@ export class VoluntadesListaComponent {
 
   resultado = [];
 
-  constructor(private service: VoluntadesService) {
+  constructor(
+    private service: VoluntadesService,
+    private authService: AuthService,
+  ) {
     this.getData();
   }
 
@@ -35,20 +39,21 @@ export class VoluntadesListaComponent {
   sustituirIntegracionesPorValores(array: VoluntadModel[]): any[] {
     for (let index = 0; index < array.length; index++) {
       const element = array[index];
-      this.resultado.push(element);
-      this.resultado[index].reputacion = element.usuario.promedioCalif;
-      this.resultado[index].nombre = element.usuario.nombre;
-      this.resultado[index].id = element._id;
-      this.resultado[index].monto = element.monto;
-      this.resultado[index].divisa = element.divisa.codigoISO;
- 
-      if (element.operacion === 1) {
-        this.resultado[index].voluntad = 'COMPRO ';
-      } else {
-        this.resultado[index].voluntad = 'VENDO ';
+      if (element.usuario._id !== this.authService.getUsuarioActualId()) {
+        this.resultado.push(element);
+        this.resultado[index].reputacion = element.usuario.promedioCalif;
+        this.resultado[index].nombre = element.usuario.nombre;
+        this.resultado[index].id = element._id;
+        this.resultado[index].monto = element.monto;
+        this.resultado[index].divisa = element.divisa.codigoISO;
+
+        if (element.operacion === 1) {
+          this.resultado[index].voluntad = 'COMPRO ';
+        } else {
+          this.resultado[index].voluntad = 'VENDO ';
+        }
       }
     }
-
     return this.resultado;
   }
 }

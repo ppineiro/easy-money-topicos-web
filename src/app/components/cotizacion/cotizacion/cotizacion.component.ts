@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { BrouCotService } from "src/app/services/broucot.service";
-import { DivisaBrouModel } from "src/app/services/models/divisabrou.model";
+import { Component, OnInit } from '@angular/core';
+import { BrouCotService } from 'src/app/services/broucot.service';
+import { DivisaBrouModel } from 'src/app/services/models/divisabrou.model';
 
 @Component({
-  selector: "app-cotizacion",
-  templateUrl: "./cotizacion.component.html",
-  styleUrls: ["./cotizacion.component.css"]
+  selector: 'app-cotizacion',
+  templateUrl: './cotizacion.component.html',
+  styleUrls: ['./cotizacion.component.css'],
 })
 export class CotizacionComponent {
   resultado = [];
