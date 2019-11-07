@@ -39,7 +39,10 @@ export class VoluntadesListaComponent {
   sustituirIntegracionesPorValores(array: VoluntadModel[]): any[] {
     for (let index = 0; index < array.length; index++) {
       const element = array[index];
-      if (element.usuario._id !== this.authService.getUsuarioActualId()) {
+      if (
+        element.usuario._id !== this.authService.getUsuarioActualId() &&
+        element.activo
+      ) {
         this.resultado.push(element);
         this.resultado[index].reputacion = element.usuario.promedioCalif;
         this.resultado[index].nombre = element.usuario.nombre;
