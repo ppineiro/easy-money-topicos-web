@@ -1,4 +1,16 @@
-<div class="text-center align-center">
-    <app-voluntad *ngFor="let r of resultado" [voluntadid]="r.id" [voluntad]="r.voluntad" [usernombre]="r.nombre" [reputacion]="r.reputacion" [divisa]="r.divisa" [monto]="r.monto">
+<form>
+  <div class="col-xs-2-12"></div>
+
+  <div class="card-columns">
+    <app-voluntad
+      *ngFor="let r of resultado"
+      [voluntadid]="r.id"
+      [voluntad]="r.voluntad"
+      [usernombre]="r.nombre"
+      [reputacion]="r.reputacion"
+      [divisa]="r.divisa"
+      [monto]="r.monto"
+    >
     </app-voluntad>
-</div>
+  </div>
+</form>
