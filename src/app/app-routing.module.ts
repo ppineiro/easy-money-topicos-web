@@ -50,11 +50,6 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: 'transaccion',
-    component: TransaccionComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
     path: 'mistransacciones',
     component: MistransaccionesComponent,
     canActivate: [AuthGuardService],
