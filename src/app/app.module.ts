@@ -47,6 +47,8 @@ import { CommonModule } from '@angular/common';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { TransaccionesListaComponent } from './components/transacciones-lista/transacciones-lista.component';
+import { TransaccionTarjetaComponent } from './components/transaccion-tarjeta/transaccion-tarjeta.component';
+import { MistransaccionesComponent } from './components/mistransacciones/mistransacciones.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -67,6 +69,8 @@ export function tokenGetter() {
     CotizacionComponent,
     ListaOfertasComponent,
     TransaccionesListaComponent,
+    TransaccionTarjetaComponent,
+    MistransaccionesComponent,
   ],
   imports: [
     CommonModule,

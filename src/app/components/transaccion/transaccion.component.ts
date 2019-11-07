@@ -17,13 +17,7 @@ import { ActivatedRoute } from '@angular/router';
   providers: [VoluntadesService, DivisasService, UsuariosService],
 })
 export class TransaccionComponent {
-  private _fechaHora: Date;
-  public get fechaHora(): Date {
-    return this._fechaHora;
-  }
-  public set fechaHora(value: Date) {
-    this._fechaHora = value;
-  }
+  fechaHora: Date;
   voluntadid: string;
   propuestaid: string;
   cotizacionBCU: number;
