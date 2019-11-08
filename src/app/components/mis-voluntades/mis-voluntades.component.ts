@@ -44,7 +44,9 @@ export class MisVoluntadesComponent {
       const element = array[index];
       if (element.activo) {
         this.resultado.push(element);
-        this.resultado[index].reputacion = element.usuario.promedioCalif;
+        this.resultado[index].reputacion = this.promedio(
+          element.usuario.calificaciones,
+        );
         this.resultado[index].nombre = element.usuario.nombre;
         this.resultado[index].id = element._id;
         this.resultado[index].monto = element.monto;
@@ -58,5 +60,13 @@ export class MisVoluntadesComponent {
       }
     }
     return this.resultado;
+  }
+
+  promedio(array: Array<number>): number {
+    let sum = 0;
+    for (const i of array) {
+      sum += i;
+    }
+    return sum / array.length;
   }
 }
