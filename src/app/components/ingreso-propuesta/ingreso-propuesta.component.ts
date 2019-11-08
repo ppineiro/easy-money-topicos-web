@@ -1,3 +1,5 @@
+import { VoluntadModel } from './../../services/models/voluntad.model';
+import { VoluntadesService } from './../../services/voluntades.service';
 import { Component } from '@angular/core';
 import { NbDateService } from '@nebular/theme';
 import { PropuestasService } from 'src/app/services/propuestas.service';
@@ -20,6 +22,7 @@ export class IngresopropuestaComponent {
   operacion: number;
   usuario: string;
   voluntadid: string;
+  voluntad: VoluntadModel;
 
   divisas = [];
 
@@ -28,19 +31,29 @@ export class IngresopropuestaComponent {
     private divisasService: DivisasService,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-  ) {}
+    private voluntadService: VoluntadesService,
+  ) {
+    this.activatedRoute.params.subscribe(params => {
+      this.voluntadid = params.id;
+    });
+    this.getdata();
+  }
 
   crearpropuestaModel(): PropuestaCreateModel {
+    const propuesta: PropuestaCreateModel = {
+      voluntad: this.voluntadid,
+      cotizacionOf: this.cotizacion,
+      usuario: this.authService.getUsuarioActualId(),
+    };
+    return propuesta;
+  }
+
+  getdata() {
     {
-      this.activatedRoute.params.subscribe(params => {
-        this.voluntadid = params.id;
+      this.voluntadService.getVoluntad(this.voluntadid).subscribe(res => {
+        this.voluntad = res;
+        console.log(res);
       });
-      const propuesta: PropuestaCreateModel = {
-        voluntad: this.voluntadid,
-        cotizacionOf: this.cotizacion,
-        usuario: this.authService.getUsuarioActualId(),
-      };
-      return propuesta;
     }
   }
 
