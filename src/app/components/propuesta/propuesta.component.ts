@@ -53,16 +53,16 @@ export class PropuestaComponent {
   async getData() {
     this.voluntadService.getVoluntad(this.voluntadid).subscribe(eve => {
       this.voluntad = eve;
-      console.log('VOLUNTADD ' + this.voluntad.operacion);
+      console.log('VOLUNTAD ' + this.voluntad.operacion);
     });
     this.brouCotService.getCotizacion().subscribe(eventos => {
       if (this.voluntad.operacion === 1) {
         this.cotizacionBrou = eventos.rates.USD.sell;
-        console.log('VOLUTAD 1' + this.cotizacionBrou);
+        console.log('VOLUNTAD 1' + this.cotizacionBrou);
         this.insertTransaccion();
       } else {
         this.cotizacionBrou = eventos.rates.USD.buy;
-        console.log('VOLUTAD 2' + this.cotizacionBrou);
+        console.log('VOLUNTAD 2' + this.cotizacionBrou);
         this.insertTransaccion();
       }
     });
