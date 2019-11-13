@@ -33,7 +33,7 @@ export class FichaVoluntadComponent {
         this.divisa = voluntad.divisa.codigoISO;
         this.monto = voluntad.monto;
         this.nombre = voluntad.usuario.nombre;
-        this.reputacion = voluntad.usuario.promedioCalif;
+        this.reputacion = this.promedio(voluntad.usuario.calificaciones);
 
         if (voluntad.operacion === 1) {
           this.voluntad = 'COMPRO ';
@@ -68,5 +68,13 @@ export class FichaVoluntadComponent {
       this.resultado[index].monto = this.monto;
     }
     return this.resultado;
+  }
+
+  promedio(array: Array<number>): number {
+    var sum = 0;
+    for (var i = 0; i < array.length; i++) {
+      sum += array[i];
+    }
+    return sum / array.length;
   }
 }

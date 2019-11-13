@@ -3,7 +3,7 @@ export class UsuarioModel {
   nombre: string;
   email: string;
   ubicacion: string;
-  promedioCalif: number;
+  calificaciones: Array<number>;
   createdAt: Date;
   updatedAt: Date;
   _v: number;

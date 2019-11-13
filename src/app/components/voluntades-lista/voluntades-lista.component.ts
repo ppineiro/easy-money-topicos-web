@@ -11,13 +11,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class VoluntadesListaComponent {
   data: VoluntadModel[] = [];
-
-  voluntad: string;
-  usernombre: string;
-  reputacion: number;
-  divisa: string;
-  monto: number;
-
   resultado = [];
 
   constructor(
@@ -29,34 +22,48 @@ export class VoluntadesListaComponent {
 
   getData() {
     this.service.getVoluntades().subscribe(eventos => {
-      console.log(eventos);
       this.data = this.sustituirIntegracionesPorValores(eventos);
-      console.log(this.data);
       return this.data;
     });
   }
 
   sustituirIntegracionesPorValores(array: VoluntadModel[]): any[] {
-    for (let index = 0; index < array.length; index++) {
-      const element = array[index];
+    for (const element of array) {
       if (
         element.usuario._id !== this.authService.getUsuarioActualId() &&
         element.activo
       ) {
+        console.log(element);
         this.resultado.push(element);
-        this.resultado[index].reputacion = element.usuario.promedioCalif;
-        this.resultado[index].nombre = element.usuario.nombre;
-        this.resultado[index].id = element._id;
-        this.resultado[index].monto = element.monto;
-        this.resultado[index].divisa = element.divisa.codigoISO;
+        const largo = this.resultado.length;
+        this.resultado[largo - 1].reputacion = this.promedio(
+          element.usuario.calificaciones,
+        );
+        this.resultado[largo - 1].nombre = element.usuario.nombre;
+        this.resultado[largo - 1].id = element._id;
+        this.resultado[largo - 1].monto = element.monto;
+        this.resultado[largo - 1].divisa = element.divisa.codigoISO;
 
         if (element.operacion === 1) {
-          this.resultado[index].voluntad = 'COMPRO ';
+          this.resultado[largo - 1].voluntad = 'COMPRO ';
         } else {
-          this.resultado[index].voluntad = 'VENDO ';
+          this.resultado[largo - 1].voluntad = 'VENDO ';
         }
       }
     }
     return this.resultado;
+  }
+
+  promedio(array: Array<number>): number {
+    console.log(array);
+    if (array.length > 0) {
+      let sum = 0;
+      for (const i of array) {
+        sum += i;
+      }
+      return sum / array.length;
+    } else {
+      return 0;
+    }
   }
 }

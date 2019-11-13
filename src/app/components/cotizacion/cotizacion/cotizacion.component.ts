@@ -9,18 +9,25 @@ import { DivisaBrouModel } from 'src/app/services/models/divisabrou.model';
 })
 export class CotizacionComponent {
   resultado = [];
-  data: DivisaBrouModel;
+  data = {
+    base: '',
+    timestamp: 0,
+    rates: {
+      ARS: { buy: 0, sell: 0 },
+      BRL: { buy: 0, sell: 0 },
+      EUR: { buy: 0, sell: 0 },
+      USD: { buy: 0, sell: 0 },
+    },
+  };
 
   constructor(private service: BrouCotService) {
     this.getData();
-    console.log(this.data);
   }
 
   headElements = ['Moneda', 'Compra', 'Venta'];
 
-  getData(): void {
+  getData() {
     this.service.getCotizacion().subscribe(eventos => {
-      console.log(eventos);
       this.data = eventos;
     });
   }
