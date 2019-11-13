@@ -7,7 +7,7 @@ import { PropuestaCreateModel } from './models/propuesta.create.model';
 const API_URL = 'https://easymoneyapi.azurewebsites.net/propuestas';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PropuestasService {
   constructor(private http: HttpClient) {
@@ -40,5 +40,9 @@ export class PropuestasService {
 
   updatePropuesta(id: string, propuesta: PropuestaCreateModel): any {
     return this.http.patch(`${API_URL}/${id}`, propuesta);
+  }
+
+  inactivatePropuesta(id: string): any {
+    return this.http.patch(`${API_URL}/inactivate/${id}`, null);
   }
 }

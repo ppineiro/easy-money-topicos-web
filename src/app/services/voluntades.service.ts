@@ -7,7 +7,7 @@ import { VoluntadCreateModel } from './models/voluntad.create.model';
 const API_URL = 'https://easymoneyapi.azurewebsites.net/voluntades';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VoluntadesService {
   constructor(private http: HttpClient) {
@@ -40,5 +40,9 @@ export class VoluntadesService {
 
   updateVoluntad(id: string, voluntad: VoluntadCreateModel): any {
     return this.http.patch(`${API_URL}/${id}`, voluntad);
+  }
+
+  inactivateVoluntad(id: string): any {
+    return this.http.patch(`${API_URL}/inactivate/${id}`, null);
   }
 }
