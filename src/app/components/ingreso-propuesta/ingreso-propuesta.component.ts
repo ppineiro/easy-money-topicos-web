@@ -8,7 +8,7 @@ import { DivisasService } from 'src/app/services/divisas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import Swal from 'sweetalert2';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ingreso-propuesta',
@@ -32,6 +32,7 @@ export class IngresopropuestaComponent {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private voluntadService: VoluntadesService,
+    private router: Router,
   ) {
     this.activatedRoute.params.subscribe(params => {
       this.voluntadid = params.id;
@@ -67,6 +68,7 @@ export class IngresopropuestaComponent {
             title: 'Ingreso correcto',
             showConfirmButton: true,
           });
+          this.router.navigate(['/dashboard']);
           this.divisa = '';
           this.operacion = 0;
           console.log(resp);
@@ -77,6 +79,7 @@ export class IngresopropuestaComponent {
             type: 'error',
             title: 'Error. Verifique los datos',
           });
+          this.router.navigate(['/dashboard']);
         },
       );
   }

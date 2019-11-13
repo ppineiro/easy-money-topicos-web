@@ -6,6 +6,7 @@ import { DivisasService } from 'src/app/services/divisas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ingreso-voluntad',
@@ -20,12 +21,16 @@ export class IngresoVoluntadComponent {
   usuario: string;
 
   divisas = [];
-  operaciones = [{ id: 1, nombre: 'Compra' }, { id: 2, nombre: 'Venta' }];
+  operaciones = [
+    { id: 1, nombre: 'Compra' },
+    { id: 2, nombre: 'Venta' },
+  ];
 
   constructor(
     private voluntadesService: VoluntadesService,
     private divisasService: DivisasService,
     private authService: AuthService,
+    private router: Router,
   ) {
     this.getDivisas();
   }
@@ -56,6 +61,8 @@ export class IngresoVoluntadComponent {
           title: 'Ingreso correcto',
           showConfirmButton: true,
         });
+        this.router.navigate(['/dashboard']);
+
         this.monto = 0;
         this.divisa = '';
         this.operacion = 0;

@@ -56,14 +56,49 @@ export class PropuestaComponent {
       console.log('VOLUNTADD ' + this.voluntad.operacion);
     });
     this.brouCotService.getCotizacion().subscribe(eventos => {
-      if (this.voluntad.operacion === 1) {
-        this.cotizacionBrou = eventos.rates.USD.sell;
-        console.log('VOLUTAD 1' + this.cotizacionBrou);
-        this.insertTransaccion();
-      } else {
-        this.cotizacionBrou = eventos.rates.USD.buy;
-        console.log('VOLUTAD 2' + this.cotizacionBrou);
-        this.insertTransaccion();
+      if (this.voluntad.divisa.codigoISO == 'USD') {
+        if (this.voluntad.operacion === 1) {
+          this.cotizacionBrou = eventos.rates.USD.sell;
+          console.log('VOLUTAD 1' + this.cotizacionBrou);
+          this.insertTransaccion();
+        } else {
+          this.cotizacionBrou = eventos.rates.USD.buy;
+          console.log('VOLUTAD 2' + this.cotizacionBrou);
+          this.insertTransaccion();
+        }
+      }
+      if (this.voluntad.divisa.codigoISO == 'ARS') {
+        if (this.voluntad.operacion === 1) {
+          this.cotizacionBrou = eventos.rates.ARS.sell;
+          console.log('VOLUTAD 1' + this.cotizacionBrou);
+          this.insertTransaccion();
+        } else {
+          this.cotizacionBrou = eventos.rates.ARS.buy;
+          console.log('VOLUTAD 2' + this.cotizacionBrou);
+          this.insertTransaccion();
+        }
+      }
+      if (this.voluntad.divisa.codigoISO == 'BRL') {
+        if (this.voluntad.operacion === 1) {
+          this.cotizacionBrou = eventos.rates.BRL.sell;
+          console.log('VOLUTAD 1' + this.cotizacionBrou);
+          this.insertTransaccion();
+        } else {
+          this.cotizacionBrou = eventos.rates.BRL.buy;
+          console.log('VOLUTAD 2' + this.cotizacionBrou);
+          this.insertTransaccion();
+        }
+      }
+      if (this.voluntad.divisa.codigoISO == 'EUR') {
+        if (this.voluntad.operacion === 1) {
+          this.cotizacionBrou = eventos.rates.EUR.sell;
+          console.log('VOLUTAD 1' + this.cotizacionBrou);
+          this.insertTransaccion();
+        } else {
+          this.cotizacionBrou = eventos.rates.EUR.buy;
+          console.log('VOLUTAD 2' + this.cotizacionBrou);
+          this.insertTransaccion();
+        }
       }
     });
   }
