@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -136,5 +137,11 @@ export class AuthService {
         });
       },
     );
+  }
+
+  agregarCalificacion(id: string, calificaciones: number[]): Observable<any> {
+    return this.http.patch(`${this.url}/users/${id}`, {
+      calificaciones,
+    });
   }
 }

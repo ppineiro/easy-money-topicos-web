@@ -19,8 +19,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TransaccionComponent {
   fechaHora: Date;
-  voluntadid: string;
-  propuestaid: string;
+
+  voluntadDivisa: string;
+  voluntadDivisaDesc: string;
+  voluntadMonto: number;
+  voluntadOperacion: string;
+  voluntadUsuario: string;
+
+  propuestaCotizOf: number;
+  propuestaUsuario: string;
+
   cotizacionBCU: number;
   califUsuarioVoluntad: number;
   califUsuarioPropuesta: number;
@@ -35,16 +43,28 @@ export class TransaccionComponent {
     this.activatedRoute.params.subscribe(params => {
       this.transaccionService.getTransaccion(params.id).subscribe(res => {
         const transaccion: TransaccionModel = res;
-        this.voluntadid = transaccion.voluntad.usuario.nombre;
-        this.propuestaid = transaccion.propuesta.usuario.nombre;
+
+        this.voluntadDivisa = transaccion.voluntad.divisa.codigoISO;
+        this.voluntadDivisaDesc = transaccion.voluntad.divisa.divisa;
+        this.voluntadMonto = transaccion.voluntad.monto;
+        if (transaccion.voluntad.operacion === 1) {
+          this.voluntadOperacion = 'COMPRA';
+        } else {
+          this.voluntadOperacion = 'VENTA';
+        }
+        this.voluntadUsuario = transaccion.voluntad.usuario.nombre;
+
+        this.propuestaCotizOf = transaccion.propuesta.cotizacionOf;
+        this.propuestaUsuario = transaccion.propuesta.usuario.nombre;
+        
         this.fechaHora = transaccion.fechaHora;
         this.cotizacionBCU = transaccion.cotizacionBCU;
         this.cotizacion = transaccion.propuesta.cotizacionOf;
         this.califUsuarioVoluntad = transaccion.califUsuarioVoluntad;
         this.califUsuarioPropuesta = transaccion.califUsuarioPropuesta;
         this.ahorro = Math.floor(
-          (transaccion.cotizacionBCU - transaccion.propuesta.cotizacionOf) *
-            transaccion.voluntad.monto,
+          (transaccion.cotizacionBCU - this.propuestaCotizOf) *
+            this.voluntadMonto,
         );
       });
     });

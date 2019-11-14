@@ -5,20 +5,30 @@
     <nb-card>
       <nb-card-header>Ingreso de Propuesta</nb-card-header>
       <nb-card-body>
-
         <br />
 
-        <input shape="round" type="number" nbInput placeholder="Cotizacion ofrecida" [(ngModel)]="cotizacion"
-          required /><br />
+        <input
+          shape="round"
+          type="number"
+          nbInput
+          placeholder="Cotizacion ofrecida"
+          [(ngModel)]="cotizacion"
+          required
+        /><br />
         <div *ngIf="voluntad.operacion === 1">
-          <p>Usted va a vender {{ voluntad.divisa.codigoISO}} y pagara un total de $ {{cotizacion * voluntad.monto}}
+          <p>
+            Usted va a vender {{ voluntad.monto }}
+            {{ voluntad.divisa.codigoISO }} y recibirá un total de $
+            {{ cotizacion * voluntad.monto }} con la cotización que ofrece
           </p>
         </div>
         <div *ngIf="voluntad.operacion === 2">
-          <p>Usted va a comprar {{ voluntad.divisa.codigoISO}} y recibira un total de $ {{cotizacion * voluntad.monto}}
+          <p>
+            Usted va a comprar {{ voluntad.monto }}
+            {{ voluntad.divisa.codigoISO }} y pagará un total de $
+            {{ cotizacion * voluntad.monto }} con la cotización que ofrece
           </p>
         </div>
-
 
         <button nbButton shape="round" (click)="insertPropuesta()">
           Confirmar

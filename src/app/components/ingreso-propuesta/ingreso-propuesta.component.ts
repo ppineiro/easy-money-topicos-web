@@ -17,18 +17,34 @@ import { ActivatedRoute, RouterLink, Router } from '@angular/router';
   templateUrl: './ingreso-propuesta.component.html',
 })
 export class IngresopropuestaComponent {
-  divisa: string;
-  cotizacion: number;
-  operacion: number;
-  usuario: string;
-  voluntadid: string;
-  voluntad: VoluntadModel;
+  divisa = '';
+  cotizacion = 0;
+  operacion = 0;
+  usuario = '';
+  voluntadid = '';
+  voluntad: VoluntadModel = {
+    _id: '',
+    _v: 0,
+    activo: true,
+    divisa: { _id: '', _v: 0, codigoISO: '', divisa: '' },
+    monto: 0,
+    operacion: 0,
+    usuario: {
+      _id: '',
+      _v: 0,
+      calificaciones: [],
+      createdAt: new Date(),
+      email: '',
+      nombre: '',
+      ubicacion: '',
+      updatedAt: new Date(),
+    },
+  };
 
   divisas = [];
 
   constructor(
     private propuestasService: PropuestasService,
-    private divisasService: DivisasService,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private voluntadService: VoluntadesService,
@@ -36,8 +52,8 @@ export class IngresopropuestaComponent {
   ) {
     this.activatedRoute.params.subscribe(params => {
       this.voluntadid = params.id;
+      this.getdata(params.id);
     });
-    this.getdata();
   }
 
   crearpropuestaModel(): PropuestaCreateModel {
@@ -49,12 +65,10 @@ export class IngresopropuestaComponent {
     return propuesta;
   }
 
-  getdata() {
-    {
-      this.voluntadService.getVoluntad(this.voluntadid).subscribe(res => {
-        this.voluntad = res;
-      });
-    }
+  getdata(voluntadId: string) {
+    this.voluntadService.getVoluntad(voluntadId).subscribe(res => {
+      this.voluntad = res;
+    });
   }
 
   insertPropuesta() {
@@ -67,7 +81,7 @@ export class IngresopropuestaComponent {
             title: 'Ingreso correcto',
             showConfirmButton: true,
           });
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['dashboard']);
           this.divisa = '';
           this.operacion = 0;
         },
@@ -76,7 +90,6 @@ export class IngresopropuestaComponent {
             type: 'error',
             title: 'Error. Verifique los datos',
           });
-          this.router.navigate(['/dashboard']);
         },
       );
   }

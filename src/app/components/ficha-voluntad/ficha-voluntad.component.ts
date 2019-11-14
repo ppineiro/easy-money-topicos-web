@@ -68,9 +68,9 @@ export class FichaVoluntadComponent {
   }
 
   promedio(array: Array<number>): number {
-    var sum = 0;
-    for (var i = 0; i < array.length; i++) {
-      sum += array[i];
+    let sum = 0;
+    for (const i of array) {
+      sum += i;
     }
     return sum / array.length;
   }

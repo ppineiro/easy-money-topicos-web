@@ -23,6 +23,7 @@ export class VoluntadComponent {
   reputacion: number;
 
   isInDashboard = false;
+  isInFicha = false;
   data: VoluntadModel[] = [];
   stars: Array<number>;
 
@@ -36,6 +37,9 @@ export class VoluntadComponent {
     this.activatedRoute.url.subscribe(res => {
       if (res.toString().includes('dashboard')) {
         this.isInDashboard = true;
+      }
+      else if (res.toString().includes('ficha-voluntad')) {
+        this.isInFicha = true;
       }
     });
   }

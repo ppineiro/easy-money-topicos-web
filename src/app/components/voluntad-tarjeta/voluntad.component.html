@@ -8,7 +8,7 @@
       </nb-card-body>
       <nb-card-footer align="right">
         <button
-          *ngIf="!isInDashboard"
+          *ngIf="!isInDashboard && !isInFicha"
           nbButton
           shape="round"
           (click)="verVoluntad()"

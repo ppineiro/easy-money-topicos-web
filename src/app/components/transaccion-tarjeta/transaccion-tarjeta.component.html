@@ -1,22 +1,64 @@
-<nb-card>
-  <nb-card-header>Datos de la transaccion</nb-card-header>
+<nb-card center status="warning">
+  <nb-card-header>Datos de la Transacción</nb-card-header>
   <nb-card-body>
-    <div>Propuesta: {{ propuestaid }}</div>
+    <div><strong>Fecha:</strong> {{ fechaHora | date: 'dd/MM/yyyy' }}</div>
+    <br />
+    <nb-card center status="warning">
+      <nb-card-header>Voluntad</nb-card-header>
+      <nb-card-body>
+        <strong>Divisa:</strong> {{ voluntadDivisa }} <br />
+        <strong>Descripción:</strong> {{ voluntadDivisaDesc }} <br />
+        <strong>Monto:</strong> {{ voluntadMonto }} <br />
+        <strong>Operación:</strong> {{ voluntadOperacion }} <br />
+        <strong>Usuario:</strong> {{ voluntadUsuario }}
+      </nb-card-body>
+    </nb-card>
+    <nb-card center status="warning">
+      <nb-card-header>Propuesta aceptada</nb-card-header>
+      <nb-card-body>
+        <strong> Cotización ofrecida:</strong> {{ propuestaCotizOf }}
+        <br />
+        <strong> Usuario:</strong> {{ propuestaUsuario }}
+      </nb-card-body>
+    </nb-card>
+    <div>
+      <strong>Calificación del usuario de la voluntad:</strong>
+      <nb-select
+        required
+        placeholder="Calificación"
+        shape="round"
+        [(ngModel)]="califUsuarioVoluntad"
+        [disabled]="califUsuarioVoluntadBool"
+      >
+        <nb-option *ngFor="let n of numbers" [value]="n">{{
+          n
+        }}</nb-option> </nb-select
+      ><br />
+    </div>
     <br /><br />
-    <div>Ofertante: {{ voluntadid }}</div>
+    <div>
+      <strong>Calificación del usuario de la propuesta:</strong>
+      <nb-select
+        placeholder="Calificación"
+        shape="round"
+        [(ngModel)]="califUsuarioPropuesta"
+        [disabled]="califUsuarioPropuestaBool"
+      >
+        <nb-option *ngFor="let n of numbers" [value]="n">{{ n }}</nb-option>
+      </nb-select>
+    </div>
     <br /><br />
-    <div>Fecha: {{ fechaHora | date: 'dd/MM/yyyy' }}</div>
-    <br /><br />
-    <div>Cotización: {{ cotizacion }}</div>
-    <br /><br />
-    <div>Calificación del usuario voluntad: {{ califUsuarioVoluntad }}</div>
-    <br /><br />
-    <div>Calificación del usuario propuesta: {{ califUsuarioPropuesta }}</div>
-    <br /><br />
-    <div>Cotización del BROU: {{ cotizacionBCU }}</div>
+    <div>
+      <strong>Cotización del BROU ese día:</strong> $ {{ cotizacionBCU }}
+    </div>
     <br /><br />
     <b>
-      <div>Ahorro: ${{ ahorro }}</div>
+      <div><strong>Ahorro:</strong> $ {{ ahorro }}</div>
     </b>
   </nb-card-body>
+  <nb-card-footer>
+    <button (click)="calificar()" class="btn btn-primary">
+      Calificar
+    </button></nb-card-footer
+  >
 </nb-card>

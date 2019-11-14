@@ -40,11 +40,25 @@ export class TransaccionesService {
     return this.http.post<TransaccionModel>(API_URL, transaccion);
   }
 
-  deleteTransaccion(id: string): any {
+  deleteTransaccion(id: string): Observable<any> {
     return this.http.delete(`${API_URL}/${id}`);
   }
 
-  updateTransaccion(id: string, transaccion: TransaccionCreateModel): any {
+  updateTransaccion(
+    id: string,
+    transaccion: TransaccionCreateModel,
+  ): Observable<any> {
     return this.http.patch(`${API_URL}/${id}`, transaccion);
+  }
+
+  updateCalificaciones(
+    id: string,
+    califVoluntad: number,
+    califPropuesta: number,
+  ): Observable<any> {
+    return this.http.patch(`${API_URL}/${id}`, {
+      califUsuarioVoluntad: califVoluntad,
+      califUsuarioPropuesta: califPropuesta,
+    });
   }
 }
