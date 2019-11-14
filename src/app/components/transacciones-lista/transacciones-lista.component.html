@@ -1,0 +1,24 @@
+<div class="text-center align-center">
+  <app-transaccion-tarjeta
+    *ngFor="let transaccion of data"
+    [id]="transaccion._id"
+    [fechaHora]="transaccion.fechaHora"
+    [voluntadDivisa]="transaccion.voluntad.divisa.codigoISO"
+    [voluntadDivisaDesc]="transaccion.voluntad.divisa.divisa"
+    [voluntadMonto]="transaccion.voluntad.monto"
+    [voluntadOperacion]="transaccion.voluntad.operacion"
+    [voluntadUsuarioId]="transaccion.voluntad.usuario._id"
+    [voluntadUsuarioCalif]="transaccion.voluntad.usuario.calificaciones"
+    [voluntadUsuario]="transaccion.voluntad.usuario.nombre"
+    [propuestaCotizOf]="transaccion.propuesta.cotizacionOf"
+    [propuestaUsuario]="transaccion.propuesta.usuario.nombre"
+    [propuestaUsuarioId]="transaccion.propuesta.usuario._id"
+    [propuestaUsuarioCalif]="transaccion.propuesta.usuario.calificaciones"
+    [cotizacionBCU]="transaccion.cotizacionBCU"
+    [califUsuarioVoluntad]="transaccion.califUsuarioVoluntad"
+    [califUsuarioPropuesta]="transaccion.califUsuarioPropuesta"
+    [ahorro]="ahorro"
+    [cotizacion]="transaccion.propuesta.cotizacionOf"
+  >
+  </app-transaccion-tarjeta>
+</div>
