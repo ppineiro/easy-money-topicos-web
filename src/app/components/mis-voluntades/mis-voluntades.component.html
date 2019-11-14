@@ -1,0 +1,27 @@
+<nb-layout>
+  <nb-layout-column class="padding0">
+    <app-navbar></app-navbar>
+    <br />
+    <nb-card center>
+      <nb-card-header>Mis voluntades</nb-card-header>
+      <nb-card-body>
+        <div class="text-center align-center">
+          <app-voluntad
+            *ngFor="let r of resultado"
+            [voluntadid]="r.id"
+            [voluntad]="r.voluntad"
+            [usernombre]="r.nombre"
+            [reputacion]="r.reputacion"
+            [divisa]="r.divisa"
+            [monto]="r.monto"
+          >
+          </app-voluntad>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    Universidad Católica del Uruguay
+  </nb-layout-footer>
+</nb-layout>

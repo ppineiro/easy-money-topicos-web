@@ -7,12 +7,10 @@ import { DivisaCreateModel } from './models/divisa.create.model';
 const API_URL = 'https://easymoneyapi.azurewebsites.net/divisas';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DivisasService {
-  constructor(private http: HttpClient) {
-    console.log('Service Listo');
-  }
+  constructor(private http: HttpClient) {}
 
   getDivisas(): Observable<DivisaModel[]> {
     return this.http.get<DivisaModel[]>(API_URL);

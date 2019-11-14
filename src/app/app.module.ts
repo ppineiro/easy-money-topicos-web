@@ -1,3 +1,4 @@
+import { IngresopropuestaComponent } from './components/ingreso-propuesta/ingreso-propuesta.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -42,9 +43,14 @@ import { VoluntadesListaComponent } from './components/voluntades-lista/voluntad
 import { FichaVoluntadComponent } from './components/ficha-voluntad/ficha-voluntad.component';
 import { PropuestaComponent } from './components/propuesta/propuesta.component';
 import { TransaccionComponent } from './components/transaccion/transaccion.component';
+import { CotizacionComponent } from './components/cotizacion/cotizacion/cotizacion.component';
 import { CommonModule } from '@angular/common';
 import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { TransaccionesListaComponent } from './components/transacciones-lista/transacciones-lista.component';
+import { TransaccionTarjetaComponent } from './components/transaccion-tarjeta/transaccion-tarjeta.component';
+import { MistransaccionesComponent } from './components/mistransacciones/mistransacciones.component';
+import { MisVoluntadesComponent } from './components/mis-voluntades/mis-voluntades.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -62,7 +68,13 @@ export function tokenGetter() {
     FichaVoluntadComponent,
     PropuestaComponent,
     TransaccionComponent,
+    CotizacionComponent,
     ListaOfertasComponent,
+    TransaccionesListaComponent,
+    TransaccionTarjetaComponent,
+    MistransaccionesComponent,
+    IngresopropuestaComponent,
+    MisVoluntadesComponent,
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { DivisasService } from 'src/app/services/divisas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ingreso-voluntad',
@@ -14,10 +15,10 @@ import Swal from 'sweetalert2';
   templateUrl: './ingreso-voluntad.component.html',
 })
 export class IngresoVoluntadComponent {
-  divisa: string;
-  monto: number;
-  operacion: number;
-  usuario: string;
+  divisa = '';
+  monto = 0;
+  operacion = 0;
+  usuario = '';
 
   divisas = [];
   operaciones = [{ id: 1, nombre: 'Compra' }, { id: 2, nombre: 'Venta' }];
@@ -26,6 +27,7 @@ export class IngresoVoluntadComponent {
     private voluntadesService: VoluntadesService,
     private divisasService: DivisasService,
     private authService: AuthService,
+    private router: Router,
   ) {
     this.getDivisas();
   }
@@ -35,7 +37,6 @@ export class IngresoVoluntadComponent {
       this.monto > 0 &&
       (this.operacion.toString() === '1' || this.operacion.toString() === '2')
     ) {
-      console.log('entro');
       const voluntad: VoluntadCreateModel = {
         divisa: this.divisa,
         monto: this.monto,
@@ -56,13 +57,13 @@ export class IngresoVoluntadComponent {
           title: 'Ingreso correcto',
           showConfirmButton: true,
         });
+        this.router.navigate(['/dashboard']);
+
         this.monto = 0;
         this.divisa = '';
         this.operacion = 0;
-        console.log(resp);
       },
       err => {
-        console.log(err);
         Swal.fire({
           type: 'error',
           title: 'Error. Verifique los datos',
@@ -78,7 +79,6 @@ export class IngresoVoluntadComponent {
         temp['id'] = i._id;
         temp['codigoISO'] = i.codigoISO;
         temp['divisa'] = i.divisa;
-        console.log(temp);
         this.divisas.push(temp);
       }
     });

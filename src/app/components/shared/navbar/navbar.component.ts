@@ -5,10 +5,12 @@ import { AuthService } from 'src/app/auth/auth.service';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
 })
-export class NavbarComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+export class NavbarComponent {
+  nombreUsuario: string;
 
-  ngOnInit() {}
+  constructor(private authService: AuthService) {
+    this.nombreUsuario = this.authService.getUsuarioActualNombre();
+  }
 
   logout(): void {
     this.authService.logout();

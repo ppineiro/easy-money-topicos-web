@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,6 @@ export class AuthService {
   TOKEN_KEY = 'token';
 
   private url = 'https://easymoneyapi.azurewebsites.net';
-  // private url = 'http://localhost:8000';
 
   userToken: string;
 
@@ -33,7 +33,6 @@ export class AuthService {
       email,
       password,
     };
-
     return this.http.post(`${this.url}/sessions`, authData).subscribe(
       resp => {
         this.guardarToken(resp['token']);
@@ -55,18 +54,16 @@ export class AuthService {
     );
   }
 
-  olvidoPass(email: string) {
+  olvidoPass(xEmail: string) {
     const authData = {
-      usuarioEmail: email,
+      email: xEmail,
     };
-    console.log(authData);
     return this.http
       .post(`${this.url}/users/forgotPassword`, authData, {
         responseType: 'text',
       })
       .subscribe(
         resp => {
-          console.log(resp);
           Swal.fire({
             type: 'success',
             title: 'Listo! Le enviamos la nueva contraseña a su correo',
@@ -75,7 +72,6 @@ export class AuthService {
           this.router.navigateByUrl('/auth/login');
         },
         err => {
-          console.log(err);
           Swal.fire({
             type: 'error',
             title: 'Correo incorrecto',
@@ -87,6 +83,11 @@ export class AuthService {
   getUsuarioActualId(): string {
     const token = localStorage.getItem('token');
     return this.jwtHelper.decodeToken(token).id;
+  }
+
+  getUsuarioActualNombre(): string {
+    const token = localStorage.getItem('token');
+    return this.jwtHelper.decodeToken(token).nombre;
   }
 
   private guardarToken(xToken: string) {
@@ -136,5 +137,11 @@ export class AuthService {
         });
       },
     );
+  }
+
+  agregarCalificacion(id: string, calificaciones: number[]): Observable<any> {
+    return this.http.patch(`${this.url}/users/${id}`, {
+      calificaciones,
+    });
   }
 }

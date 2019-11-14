@@ -1,0 +1,56 @@
+<nb-layout>
+  <nb-layout-column class="padding0">
+    <app-navbar></app-navbar>
+    <br />
+    <nb-card center>
+      <nb-card-header>Cotización actual del BROU</nb-card-header>
+      <nb-card-body>
+        <table mdbTable>
+          <thead>
+            <tr>
+              <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol>
+              <td>
+                <span class="flag-icon flag-icon-ar flag-icon-squared"></span>
+                Peso Argentino
+              </td>
+              <td>{{ data.rates.ARS.buy }}</td>
+              <td>{{ data.rates.ARS.sell }}</td>
+            </tr>
+            <tr mdbTableCol>
+              <td>
+                <span class="flag-icon flag-icon-br flag-icon-squared"></span>
+                Real
+              </td>
+              <td>{{ data.rates.BRL.buy }}</td>
+              <td>{{ data.rates.BRL.sell }}</td>
+            </tr>
+            <tr mdbTableCol>
+              <td>
+                <span class="flag-icon flag-icon-hn flag-icon-squared"></span>
+                Euro
+              </td>
+              <td>{{ data.rates.EUR.buy }}</td>
+              <td>{{ data.rates.EUR.sell }}</td>
+            </tr>
+            <tr mdbTableCol>
+              <td>
+                <span class="flag-icon flag-icon-us flag-icon-squared"></span>
+                Dólar
+              </td>
+              <td>{{ data.rates.USD.buy }}</td>
+              <td>{{ data.rates.USD.sell }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    Universidad Católica del Uruguay
+  </nb-layout-footer>
+</nb-layout>

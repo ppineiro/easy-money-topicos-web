@@ -28,12 +28,11 @@ export class FichaVoluntadComponent {
     this.activatedRoute.params.subscribe(params => {
       this.voluntadesService.getVoluntad(params.id).subscribe(res => {
         const voluntad = res;
-        console.log(res);
         this.voluntadid = voluntad._id;
         this.divisa = voluntad.divisa.codigoISO;
         this.monto = voluntad.monto;
         this.nombre = voluntad.usuario.nombre;
-        this.reputacion = voluntad.usuario.promedioCalif;
+        this.reputacion = this.promedio(voluntad.usuario.calificaciones);
 
         if (voluntad.operacion === 1) {
           this.voluntad = 'COMPRO ';
@@ -50,9 +49,7 @@ export class FichaVoluntadComponent {
     this.propuestasService
       .getPropuestasPorVoluntad(this.voluntadid)
       .subscribe(propuestas => {
-        console.log(propuestas);
         this.data = this.sustituirIntegracionesPorValores(propuestas);
-        console.log(this.data);
         return this.data;
       });
   }
@@ -68,5 +65,17 @@ export class FichaVoluntadComponent {
       this.resultado[index].monto = this.monto;
     }
     return this.resultado;
+  }
+
+  promedio(array: Array<number>): number {
+    if (array.length > 0) {
+      let sum = 0;
+      for (const i of array) {
+        sum += i;
+      }
+      return Math.floor(sum / array.length);
+    } else {
+      return 0;
+    }
   }
 }

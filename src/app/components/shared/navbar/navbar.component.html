@@ -15,12 +15,25 @@
         >
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#/dashboard"
+        <a class="nav-link" href="#/mis-voluntades"
           >Mis voluntades <span class="sr-only">(current)</span></a
         >
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#/mistransacciones"
+          >Mis transacciones <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#/cotizacion"
+          >Cotización <span class="sr-only">(current)</span></a
+        >
+      </li>
     </ul>
-    <button (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0">
+    <button class="btn btn-outline-primary my-2 my-sm-0">
+      Hola {{ nombreUsuario }}!</button
+    >&nbsp;
+    <button (click)="logout()" class="btn btn-danger my-2 my-sm-0">
       Cerrar sesión
     </button>
   </div>
