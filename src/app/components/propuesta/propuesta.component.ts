@@ -112,7 +112,10 @@ export class PropuestaComponent {
       });
   }
 
-  rechazar() {}
+  rechazar() {
+    this.voluntadService.inactivateVoluntad(this.voluntadid);
+    this.router.navigateByUrl('/dashboard');
+  }
   async aceptar() {
     await this.getData();
     this.voluntadService.inactivateVoluntad(this.voluntadid);
