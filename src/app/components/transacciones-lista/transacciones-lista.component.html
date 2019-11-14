@@ -1,9 +1,14 @@
 <div class="text-center align-center">
-  <app-transaccion-tarjeta *ngFor="let transaccion of data" [fechaHora]="transaccion.fechaHora"
-    [voluntadid]=" transaccion.voluntad.usuario.nombre" [propuestaid]="transaccion.propuesta.usuario.nombre"
-    [cotizacionBCU]="transaccion.x" [califUsuarioVoluntad]="transaccion.califUsuarioVoluntad"
-    [califUsuarioPropuesta]="transaccion.califUsuarioPropuesta" [ahorro]="ahorro"
-    [cotizacion]="transaccion.propuesta.cotizacionOf">
-
+  <app-transaccion-tarjeta
+    *ngFor="let transaccion of data"
+    [fechaHora]="transaccion.fechaHora"
+    [voluntadid]="transaccion.voluntad.usuario.nombre"
+    [propuestaid]="transaccion.propuesta.usuario.nombre"
+    [cotizacionBCU]="transaccion.cotizacionBCU"
+    [califUsuarioVoluntad]="transaccion.califUsuarioVoluntad"
+    [califUsuarioPropuesta]="transaccion.califUsuarioPropuesta"
+    [ahorro]="ahorro"
+    [cotizacion]="transaccion.propuesta.cotizacionOf"
+  >
   </app-transaccion-tarjeta>
 </div>

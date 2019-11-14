@@ -1,5 +1,3 @@
-
-
 .card-row {
   display: flex;
   margin: 0 -0.5rem;
@@ -13,7 +11,6 @@
 .btn-group {
   height: 100px;
   width: 500px;
-
 }
 
 .aceptar {
@@ -32,7 +29,7 @@
 }
 
 .aceptar:hover {
-  background-color: #3e8e41
+  background-color: #3e8e41;
 }
 
 .aceptar:active {
@@ -40,7 +37,6 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
 
 .rechazar {
   width: 45%;
@@ -58,11 +54,20 @@
 }
 
 .rechazar:hover {
-  background-color: #990613
+  background-color: #990613;
 }
 
 .rechazar:active {
   background-color: #990613;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+.center {
+  position: relative;
+  text-align: center;
+}
+
+.padding0 {
+  padding: 0% !important;
 }

@@ -7,12 +7,10 @@ import { UsuarioCreateModel } from './models/usuario.create.model';
 const API_URL = 'https://easymoneyapi.azurewebsites.net/users';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsuariosService {
-  constructor(private http: HttpClient) {
-    console.log('Service Listo');
-  }
+  constructor(private http: HttpClient) {}
 
   getUsuarios(): Observable<UsuarioModel[]> {
     return this.http.get<UsuarioModel[]>(API_URL);

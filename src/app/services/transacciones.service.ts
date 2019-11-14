@@ -7,12 +7,10 @@ import { TransaccionCreateModel } from './models/transaccion.create.model';
 const API_URL = 'https://easymoneyapi.azurewebsites.net/transacciones';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TransaccionesService {
-  constructor(private http: HttpClient) {
-    console.log('Service Listo');
-  }
+  constructor(private http: HttpClient) {}
 
   getTransacciones(): Observable<TransaccionModel[]> {
     return this.http.get<TransaccionModel[]>(API_URL);
@@ -23,21 +21,21 @@ export class TransaccionesService {
   }
 
   getTransaccionesPorVoluntad(
-    voluntad: string
+    voluntad: string,
   ): Observable<TransaccionModel[]> {
     return this.http.get<TransaccionModel[]>(`${API_URL}/voluntad/${voluntad}`);
   }
 
   getTransaccionesPorPropuesta(
-    propuesta: string
+    propuesta: string,
   ): Observable<TransaccionModel[]> {
     return this.http.get<TransaccionModel[]>(
-      `${API_URL}/propuesta/${propuesta}`
+      `${API_URL}/propuesta/${propuesta}`,
     );
   }
 
   insertTransaccion(
-    transaccion: TransaccionCreateModel
+    transaccion: TransaccionCreateModel,
   ): Observable<TransaccionModel> {
     return this.http.post<TransaccionModel>(API_URL, transaccion);
   }

@@ -32,9 +32,7 @@ export class MisVoluntadesComponent {
     this.service
       .getVoluntadesPorUsuario(this.authService.getUsuarioActualId())
       .subscribe(eventos => {
-        console.log(eventos);
         this.data = this.sustituirIntegracionesPorValores(eventos);
-        console.log(this.data);
         return this.data;
       });
   }

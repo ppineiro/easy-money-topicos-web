@@ -10,9 +10,7 @@ const API_URL = 'https://easymoneyapi.azurewebsites.net/propuestas';
   providedIn: 'root',
 })
 export class PropuestasService {
-  constructor(private http: HttpClient) {
-    console.log('Service Listo');
-  }
+  constructor(private http: HttpClient) {}
 
   getPropuestas(): Observable<PropuestaModel[]> {
     return this.http.get<PropuestaModel[]>(API_URL);

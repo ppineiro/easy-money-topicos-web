@@ -25,9 +25,7 @@ export class TransaccionesListaComponent {
 
   getData(usuarioId: string) {
     this.service.getTransacciones().subscribe(eventos => {
-      console.log(eventos);
       this.data = this.filtrarUsuarioSustituirIntegValores(eventos, usuarioId);
-      console.log(this.data);
       return this.data;
     });
   }

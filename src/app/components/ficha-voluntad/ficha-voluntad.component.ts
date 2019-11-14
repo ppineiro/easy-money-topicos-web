@@ -28,7 +28,6 @@ export class FichaVoluntadComponent {
     this.activatedRoute.params.subscribe(params => {
       this.voluntadesService.getVoluntad(params.id).subscribe(res => {
         const voluntad = res;
-        console.log(res);
         this.voluntadid = voluntad._id;
         this.divisa = voluntad.divisa.codigoISO;
         this.monto = voluntad.monto;
@@ -50,9 +49,7 @@ export class FichaVoluntadComponent {
     this.propuestasService
       .getPropuestasPorVoluntad(this.voluntadid)
       .subscribe(propuestas => {
-        console.log(propuestas);
         this.data = this.sustituirIntegracionesPorValores(propuestas);
-        console.log(this.data);
         return this.data;
       });
   }

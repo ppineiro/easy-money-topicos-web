@@ -33,7 +33,6 @@ export class VoluntadesListaComponent {
         element.usuario._id !== this.authService.getUsuarioActualId() &&
         element.activo
       ) {
-        console.log(element);
         this.resultado.push(element);
         const largo = this.resultado.length;
         this.resultado[largo - 1].reputacion = this.promedio(
@@ -55,7 +54,6 @@ export class VoluntadesListaComponent {
   }
 
   promedio(array: Array<number>): number {
-    console.log(array);
     if (array.length > 0) {
       let sum = 0;
       for (const i of array) {

@@ -10,9 +10,7 @@ const API_URL = 'https://easymoneyapi.azurewebsites.net/voluntades';
   providedIn: 'root',
 })
 export class VoluntadesService {
-  constructor(private http: HttpClient) {
-    console.log('Service Listo');
-  }
+  constructor(private http: HttpClient) {}
 
   getVoluntades(): Observable<VoluntadModel[]> {
     return this.http.get<VoluntadModel[]>(API_URL);

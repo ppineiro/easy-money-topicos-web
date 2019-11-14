@@ -9,9 +9,7 @@ const API_URL = 'https://cotizaciones-brou.herokuapp.com/api/currency/latest';
   providedIn: 'root',
 })
 export class BrouCotService {
-  constructor(private http: HttpClient) {
-    console.log('Service Listo');
-  }
+  constructor(private http: HttpClient) {}
 
   getCotizacion(): Observable<DivisaBrouModel> {
     return this.http.get<DivisaBrouModel>(API_URL);

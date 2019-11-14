@@ -35,9 +35,7 @@ export class PropuestaComponent {
     private transaccionService: TransaccionesService,
     private brouCotService: BrouCotService,
     private voluntadService: VoluntadesService,
-  ) {
-    // console.log('cotizacion ' + this.cotizacionBrou);
-  }
+  ) {}
 
   crearTransaccionModel(): TransaccionCreateModel {
     const transaccionNew: TransaccionCreateModel = {
@@ -53,50 +51,41 @@ export class PropuestaComponent {
   async getData() {
     this.voluntadService.getVoluntad(this.voluntadid).subscribe(eve => {
       this.voluntad = eve;
-      console.log('VOLUNTAD ' + this.voluntad.operacion);
     });
     this.brouCotService.getCotizacion().subscribe(eventos => {
       if (this.voluntad.divisa.codigoISO == 'USD') {
         if (this.voluntad.operacion === 1) {
           this.cotizacionBrou = eventos.rates.USD.sell;
-          console.log('VOLUNTAD 1' + this.cotizacionBrou);
           this.insertTransaccion();
         } else {
           this.cotizacionBrou = eventos.rates.USD.buy;
-          console.log('VOLUNTAD 2' + this.cotizacionBrou);
           this.insertTransaccion();
         }
       }
       if (this.voluntad.divisa.codigoISO == 'ARS') {
         if (this.voluntad.operacion === 1) {
           this.cotizacionBrou = eventos.rates.ARS.sell;
-          console.log('VOLUNTAD 1' + this.cotizacionBrou);
           this.insertTransaccion();
         } else {
           this.cotizacionBrou = eventos.rates.ARS.buy;
-          console.log('VOLUNTAD 2' + this.cotizacionBrou);
           this.insertTransaccion();
         }
       }
       if (this.voluntad.divisa.codigoISO == 'BRL') {
         if (this.voluntad.operacion === 1) {
           this.cotizacionBrou = eventos.rates.BRL.sell;
-          console.log('VOLUNTAD 1' + this.cotizacionBrou);
           this.insertTransaccion();
         } else {
           this.cotizacionBrou = eventos.rates.BRL.buy;
-          console.log('VOLUNTAD 2' + this.cotizacionBrou);
           this.insertTransaccion();
         }
       }
       if (this.voluntad.divisa.codigoISO == 'EUR') {
         if (this.voluntad.operacion === 1) {
           this.cotizacionBrou = eventos.rates.EUR.sell;
-          console.log('VOLUNTAD 1' + this.cotizacionBrou);
           this.insertTransaccion();
         } else {
           this.cotizacionBrou = eventos.rates.EUR.buy;
-          console.log('VOLUNTAD 2' + this.cotizacionBrou);
           this.insertTransaccion();
         }
       }
@@ -119,6 +108,5 @@ export class PropuestaComponent {
   async aceptar() {
     await this.getData();
     this.voluntadService.inactivateVoluntad(this.voluntadid);
-    console.log(this.crearTransaccionModel());
   }
 }

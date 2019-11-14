@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-transaccion',
   templateUrl: './transaccion.component.html',
+  styleUrls: ['./transaccion.component.scss'],
   providers: [VoluntadesService, DivisasService, UsuariosService],
 })
 export class TransaccionComponent {
@@ -34,7 +35,6 @@ export class TransaccionComponent {
     this.activatedRoute.params.subscribe(params => {
       this.transaccionService.getTransaccion(params.id).subscribe(res => {
         const transaccion: TransaccionModel = res;
-        console.log(res);
         this.voluntadid = transaccion.voluntad.usuario.nombre;
         this.propuestaid = transaccion.propuesta.usuario.nombre;
         this.fechaHora = transaccion.fechaHora;
@@ -52,8 +52,6 @@ export class TransaccionComponent {
 
   getData() {
     this.cotizacionservice.getCotizacion().subscribe(eventos => {
-      console.log(eventos);
-      console.log('entre ' + eventos.rates.USD.sell);
       let rates = eventos['rates'];
       let peso = rates[0];
     });

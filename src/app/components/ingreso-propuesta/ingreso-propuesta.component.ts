@@ -53,7 +53,6 @@ export class IngresopropuestaComponent {
     {
       this.voluntadService.getVoluntad(this.voluntadid).subscribe(res => {
         this.voluntad = res;
-        console.log(res);
       });
     }
   }
@@ -71,10 +70,8 @@ export class IngresopropuestaComponent {
           this.router.navigate(['/dashboard']);
           this.divisa = '';
           this.operacion = 0;
-          console.log(resp);
         },
         err => {
-          console.log(err);
           Swal.fire({
             type: 'error',
             title: 'Error. Verifique los datos',

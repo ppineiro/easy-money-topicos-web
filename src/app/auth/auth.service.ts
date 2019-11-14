@@ -11,7 +11,6 @@ export class AuthService {
   TOKEN_KEY = 'token';
 
   private url = 'https://easymoneyapi.azurewebsites.net';
-  // private url = 'http://localhost:8000';
 
   userToken: string;
 
@@ -33,11 +32,8 @@ export class AuthService {
       email,
       password,
     };
-    console.log(email);
-    console.log(password);
     return this.http.post(`${this.url}/sessions`, authData).subscribe(
       resp => {
-        console.log(resp);
         this.guardarToken(resp['token']);
         Swal.fire({
           type: 'success',
@@ -49,7 +45,6 @@ export class AuthService {
         this.router.navigateByUrl('/dashboard');
       },
       err => {
-        console.log(err);
         Swal.fire({
           type: 'error',
           title: 'Correo y/o contraseña incorrecta',
@@ -62,14 +57,12 @@ export class AuthService {
     const authData = {
       email: xEmail,
     };
-    console.log(authData);
     return this.http
       .post(`${this.url}/users/forgotPassword`, authData, {
         responseType: 'text',
       })
       .subscribe(
         resp => {
-          console.log(resp);
           Swal.fire({
             type: 'success',
             title: 'Listo! Le enviamos la nueva contraseña a su correo',
@@ -78,7 +71,6 @@ export class AuthService {
           this.router.navigateByUrl('/auth/login');
         },
         err => {
-          console.log(err);
           Swal.fire({
             type: 'error',
             title: 'Correo incorrecto',
@@ -90,6 +82,11 @@ export class AuthService {
   getUsuarioActualId(): string {
     const token = localStorage.getItem('token');
     return this.jwtHelper.decodeToken(token).id;
+  }
+
+  getUsuarioActualNombre(): string {
+    const token = localStorage.getItem('token');
+    return this.jwtHelper.decodeToken(token).nombre;
   }
 
   private guardarToken(xToken: string) {

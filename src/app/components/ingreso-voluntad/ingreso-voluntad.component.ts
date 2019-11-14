@@ -15,16 +15,13 @@ import { Router } from '@angular/router';
   templateUrl: './ingreso-voluntad.component.html',
 })
 export class IngresoVoluntadComponent {
-  divisa: string;
-  monto: number;
-  operacion: number;
-  usuario: string;
+  divisa = '';
+  monto = 0;
+  operacion = 0;
+  usuario = '';
 
   divisas = [];
-  operaciones = [
-    { id: 1, nombre: 'Compra' },
-    { id: 2, nombre: 'Venta' },
-  ];
+  operaciones = [{ id: 1, nombre: 'Compra' }, { id: 2, nombre: 'Venta' }];
 
   constructor(
     private voluntadesService: VoluntadesService,
@@ -40,7 +37,6 @@ export class IngresoVoluntadComponent {
       this.monto > 0 &&
       (this.operacion.toString() === '1' || this.operacion.toString() === '2')
     ) {
-      console.log('entro');
       const voluntad: VoluntadCreateModel = {
         divisa: this.divisa,
         monto: this.monto,
@@ -66,10 +62,8 @@ export class IngresoVoluntadComponent {
         this.monto = 0;
         this.divisa = '';
         this.operacion = 0;
-        console.log(resp);
       },
       err => {
-        console.log(err);
         Swal.fire({
           type: 'error',
           title: 'Error. Verifique los datos',
@@ -85,7 +79,6 @@ export class IngresoVoluntadComponent {
         temp['id'] = i._id;
         temp['codigoISO'] = i.codigoISO;
         temp['divisa'] = i.divisa;
-        console.log(temp);
         this.divisas.push(temp);
       }
     });
