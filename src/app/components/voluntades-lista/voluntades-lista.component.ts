@@ -59,7 +59,7 @@ export class VoluntadesListaComponent {
       for (const i of array) {
         sum += i;
       }
-      return sum / array.length;
+      return Math.floor(sum / array.length);
     } else {
       return 0;
     }

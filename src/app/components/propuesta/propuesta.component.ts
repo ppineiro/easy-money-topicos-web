@@ -44,7 +44,6 @@ export class PropuestaComponent implements OnInit {
 
   ngOnInit() {
     this.propuestaService.getPropuesta(this.propuestaid).subscribe(res => {
-      console.log(res);
       this.propuesta = res;
     });
   }
@@ -105,8 +104,6 @@ export class PropuestaComponent implements OnInit {
   }
 
   insertTransaccion() {
-    console.log(this.voluntad);
-    console.log(this.propuesta);
     this.transaccionService
       .insertTransaccion(this.crearTransaccionModel())
       .subscribe(resp => {

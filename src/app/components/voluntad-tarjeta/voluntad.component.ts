@@ -1,6 +1,6 @@
 import { VoluntadModel } from '../../services/models/voluntad.model';
 import { VoluntadesService } from '../../services/voluntades.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
   templateUrl: './voluntad.component.html',
   styleUrls: ['./voluntad.component.scss'],
 })
-export class VoluntadComponent {
+export class VoluntadComponent implements OnInit {
   @Input()
   voluntadid: string;
   @Input()
@@ -32,16 +32,18 @@ export class VoluntadComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-    this.stars = Array(this.reputacion).fill(4);
-
     this.activatedRoute.url.subscribe(res => {
       if (res.toString().includes('dashboard')) {
         this.isInDashboard = true;
-      }
-      else if (res.toString().includes('ficha-voluntad')) {
+      } else if (res.toString().includes('ficha-voluntad')) {
         this.isInFicha = true;
       }
     });
+  }
+
+  ngOnInit() {
+    console.log(this.reputacion);
+    this.stars = Array(this.reputacion).fill(4);
   }
 
   verVoluntad() {
